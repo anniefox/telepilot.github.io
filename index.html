@@ -8,19 +8,20 @@
     <link rel="stylesheet" href="jquery.fullpage.css">
     <link rel="stylesheet" href="master.css">
   </head>
+
+
   <body>
     <canvas class="paper"></canvas>
     <div class="navbar">
-      <a href="google.com">Home</a>
-      <a href="google.com">About</a>
+      <a href="#ankoria">Ankoria</a>
+      <a href="#sign-up">Sign Up</a>
     </div>
     <div id="wrapper">
-
-      <div class="section">
+      <div class="section" data-anchor="ankoria">
         <h1>Ankoria</h1>
         <h2>Cool Slogan About Stuff</h2>
       </div>
-      <div class="section">
+      <div class="section" data-anchor="sign-up">
         <h2>Fill out the form below and become a champion</h2>
         <div class="btns">
           <button type="button" class="btn btn-outline-primary btn-lg">Sign Up</button>
@@ -28,12 +29,15 @@
 
       </div>
     </div>
+
+
+
+
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="jquery-3.2.1.min.js"></script>
     <script src="jquery.fullpage.js"></script>
-
     <script>
       $(document).ready(function() {
         $('#wrapper').fullpage();
