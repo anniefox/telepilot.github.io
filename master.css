@@ -1,7 +1,7 @@
 body {
   background-color: black;
   font-family: 'Quicksand', sans-serif;
-
+  margin: 0;
 
 }
 
@@ -48,13 +48,17 @@ h2 {
   display: flex;
   justify-content: center;
   text-align: center;
+  margin-bottom: 60px;
+}
+
+.btns {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+
 }
 
 .btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  wrap: wrap;
-
-
+  font-size: 2em;
+  padding: 10px 20px;
 }
