@@ -24,8 +24,13 @@ canvas {
 .navbar a {
   color: white;
   text-decoration: none;
-  font-size: 2.5em;
-  padding: 20px;
+  font-size: 2em;
+  margin-top: 50px;
+  margin-left: 20px;
+  margin-right: 20px;
+  padding: 10px;
+  /* border: 1px solid white;
+  border-radius: 5px; */
 
 
 }
@@ -61,4 +66,5 @@ h2 {
 .btn {
   font-size: 2em;
   padding: 10px 20px;
+
 }
