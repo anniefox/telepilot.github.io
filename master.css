@@ -23,40 +23,40 @@ canvas {
   z-index: -99;
 }
 
-<<<<<<< HEAD
+
 /* #navbar {
   height: 60px;
   background-color: black;
   width: 100%;
   position: fixed;
-=======
+
 /* .navbar {
   height: 50px;
   position: absolute;
->>>>>>> e865e30f21c0dad65a7c9f8d7001f7294237c273
+
   z-index: 999;
   display: flex;
   justify-content: flex-start;
 }
 
-<<<<<<< HEAD
+
 #navbar a {
-=======
+
 /* .navbar a {
->>>>>>> e865e30f21c0dad65a7c9f8d7001f7294237c273
+ e865e30f21c0dad65a7c9f8d7001f7294237c273
   color: white;
   text-decoration: none;
   font-size: 2em;
   margin-top: 50px;
-<<<<<<< HEAD
+
   padding: 10px;
   /* border: 1px solid white;
-  border-radius: 5px; }*/
-=======
-  padding: 10px; */
+  border-radius: 5px; }
+
+  padding: 10px;
 
 
-  /* border: 1px solid white;
+   border: 1px solid white;
   border-radius: 5px;
 
 
@@ -73,7 +73,7 @@ canvas {
   font-size: 1.5em;
   margin: 10px;
   text-decoration: none;
->>>>>>> e865e30f21c0dad65a7c9f8d7001f7294237c273
+
 
 .nav {
   position: fixed;
@@ -124,11 +124,11 @@ h2 {
   text-align: center;
   border: solid 3px white;
   padding: 20px;
-<<<<<<< HEAD
+
   margin: 50px 25px 0px 25px;
-=======
+
   margin-top: 50px;
->>>>>>> e865e30f21c0dad65a7c9f8d7001f7294237c273
+
 
 }
 .box h3 {
