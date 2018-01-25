@@ -27,7 +27,7 @@ canvas {
 
 
 .nav {
-  position: absolute;
+  position: fixed;
   z-index: 200;
 }
 
