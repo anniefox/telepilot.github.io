@@ -5,6 +5,16 @@ body {
 
 }
 
+.section {
+  min-height: 600px;
+  height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: wrap column;
+  margin: 10 auto;
+}
+
 
 img {
   width: 100%;
@@ -14,29 +24,6 @@ img {
 canvas {
   z-index: -99;
 }
-
-/* .navbar {
-  height: 50px;
-  position: absolute;
-  z-index: 999;
-  display: flex;
-  justify-content: flex-start;
-}
-
-/* .navbar a {
-  color: white;
-  text-decoration: none;
-  font-size: 2em;
-  margin-top: 50px;
-  padding: 10px; */
-
-
-  /* border: 1px solid white;
-  border-radius: 5px;
-
-
-}  */
-
 
 
 .nav {
@@ -52,7 +39,7 @@ canvas {
 }
 
 canvas {
-  position: absolute;
+  position: fixed;
 }
 
 h1 {
