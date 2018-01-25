@@ -2,7 +2,10 @@ body {
   background-color: black;
   font-family: 'Quicksand', sans-serif;
   margin: 0;}
-
+#wrapper{
+  min-height: 1800px;
+  height: 1800px;
+}
 .section {
   min-height: 600px;
   height: 600px;
@@ -61,19 +64,6 @@ canvas {
 
 
 }  */
-
-
-
-.nav {
-  position: absolute;
-  z-index: 200;
-}
-
-.nav-item {
-  font-size: 1.5em;
-  margin: 10px;
-  text-decoration: none;
-}
 
 .nav {
   position: fixed;
