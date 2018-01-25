@@ -15,24 +15,39 @@ canvas {
   z-index: -99;
 }
 
-.navbar {
+/* .navbar {
   height: 50px;
-  width: 100%;
   position: absolute;
   z-index: 999;
+  display: flex;
+  justify-content: flex-start;
 }
 
-.navbar a {
+/* .navbar a {
   color: white;
   text-decoration: none;
   font-size: 2em;
   margin-top: 50px;
-  margin-left: 20px;
-  margin-right: 20px;
-  padding: 10px;
-  /* border: 1px solid white;
-  border-radius: 5px; */
+  padding: 10px; */
 
+
+  /* border: 1px solid white;
+  border-radius: 5px;
+
+
+}  */
+
+
+
+.nav {
+  position: absolute;
+  z-index: 200;
+}
+
+.nav-item {
+  font-size: 1.5em;
+  margin: 10px;
+  text-decoration: none;
 
 }
 
@@ -68,4 +83,16 @@ h2 {
   font-size: 2em;
   padding: 10px 20px;
 
+}
+
+.box {
+  color: white;
+  text-align: center;
+  border: solid 3px white;
+  padding: 20px;
+  margin-top: 50px;
+
+}
+.box h3 {
+  margin-bottom: 30px;
 }
