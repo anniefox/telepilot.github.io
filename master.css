@@ -73,7 +73,7 @@ canvas {
   font-size: 1.5em;
   margin: 10px;
   text-decoration: none;
-
+}
 
 .nav {
   position: fixed;
@@ -124,7 +124,6 @@ h2 {
   text-align: center;
   border: solid 3px white;
   padding: 20px;
-
   margin: 50px 25px 0px 25px;
 
   margin-top: 50px;
