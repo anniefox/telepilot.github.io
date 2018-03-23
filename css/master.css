@@ -187,6 +187,7 @@ h2 {
   visibility: visible;
   position: relative;
   margin-top: -100vh;
+
 }
 .visible-2 {
   visibility: visible;
@@ -195,4 +196,5 @@ h2 {
 
 .absolute {
   visibility: hidden;
+
 }
