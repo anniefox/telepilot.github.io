@@ -1,16 +1,11 @@
-
-
-
-
 body {
   background-color: black;
   font-family: 'jura', Arial, sans-serif;
-  margin: 0;
+  margin: 0 auto;
   color: white;
 
 
 }
-
 
 
 
@@ -30,6 +25,7 @@ body {
 .section-2 {
   position: absolute;
   min-height: 600px;
+  width: 100%;
   height: 100vh;
   top: 0;
   bottom: 0;
@@ -41,7 +37,7 @@ body {
   background-color: white;
   color: black;
   visibility: hidden;
-  z-index: 1;
+
 
 }
 
@@ -52,6 +48,7 @@ body {
 .uno {
   position: absolute;
   margin-top: 0vh;
+  width: 100%;
   display: grid;
   grid-column: 1fr;
   z-index: 1;
@@ -59,6 +56,7 @@ body {
   height: 100vh;
   background-color: white;
   color: black;
+  border: 0px;
   visibility: hidden;
   -webkit-transition: margin-top 1000ms ease-in-out;
     -moz-transition: margin-top 1000ms ease-in-out;
@@ -67,11 +65,31 @@ body {
     transition: margin-top 1000ms ease-in-out;
 
 }
+iframe {
+  width:760px;
+  height:515px
+}
 
+
+@media screen and (max-width: 992px)  {
+  .uno {
+    height: 50vh;
+
+  }
+  .section-2 {
+    height: 50vh;
+  }
+  iframe {
+    width:560px;
+    height:315px;
+    margin-top: -200px;
+  }
+}
 
 
 .uno h1 {
   margin-top: 50px;
+  font-size: 36px;
 }
 
 img {
@@ -182,6 +200,60 @@ h2 {
 
 }
 
+.click {
+  height: 100px;
+  margin-left: -10px;
+
+  text-align: center;
+  opacity: 0;
+  animation: clickMe 6s ease-in-out forwards;
+}
+
+@keyframes clickMe {
+
+  0% {
+    opacity: 0;
+  }
+  80% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+
+}
+
+.click i {
+  font-size: 50px;
+
+  animation: arrowUp 2s ease-in-out infinite;
+  margin-left: -15px;
+  margin-top: -30px;
+  position: absolute;
+}
+
+@keyframes arrowUp {
+
+  0% {
+    opacity: 0.6;
+    margin-top: -50px;
+  }
+  25% {
+    opacity: 0.4
+  }
+  50% {
+    opacity: 0.6;
+    margin-top: -40px;
+  }
+  75% {
+    opacity: 0.4
+  }
+  100% {
+    opacity: 0.6;
+    margin-top: -50px;
+  }
+
+}
 
 .visible {
   visibility: visible;
@@ -197,4 +269,24 @@ h2 {
 .absolute {
   visibility: hidden;
 
+}
+
+.logo {
+  position: fixed;
+  top: 10;
+  left: 0;
+  margin-top: -20px;
+  margin-left: -20px;
+  z-index: 998;
+}
+
+.logo a {
+  display: block;
+
+  position: absolute;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
