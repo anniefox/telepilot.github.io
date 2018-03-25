@@ -58,11 +58,6 @@ body {
   color: black;
   border: 0px;
   visibility: hidden;
-  -webkit-transition: margin-top 1000ms ease-in-out;
-    -moz-transition: margin-top 1000ms ease-in-out;
-    -ms-transition: margin-top 1000ms ease-in-out;
-    -o-transition: margin-top 1000ms ease-in-out;
-    transition: margin-top 1000ms ease-in-out;
 
 }
 iframe {
@@ -273,7 +268,7 @@ h2 {
 
 .logo {
   position: fixed;
-  top: 10;
+  top: 0;
   left: 0;
   margin-top: -20px;
   margin-left: -20px;
@@ -289,4 +284,13 @@ h2 {
   left: 0;
   right: 0;
   bottom: 0;
+}
+
+.slideInUp {
+  visibility: visible;
+}
+
+.animated {
+  -webkit-animation-duration: 1200ms;
+  animation-duration: 1200ms;
 }
