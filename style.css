@@ -1,0 +1,21 @@
+body {
+  background-image: url(images/hLecp04.jpg);
+  margin: 0px;
+  overflow: hidden;
+  background-size:     cover;                      /* <------ */
+    background-repeat:   no-repeat;
+    background-position: center center;
+}
+
+#info {
+  visibility: hidden;
+
+}
+.dg {
+  visibility: hidden;
+
+}
+
+canvas {
+  background: transparent;
+}
