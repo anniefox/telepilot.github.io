@@ -14,6 +14,12 @@ body {
   font-family: "Sequel-100"
 }
 
+input {
+  display: none;
+}
+
+/* start of desktop styles */
+
 .wrapper {
   display: grid;
   grid-template-columns: 1fr 4fr;
@@ -39,8 +45,6 @@ body {
 }
 
 
-
-
 #logo {
   width: 100%;
   height: auto;
@@ -48,7 +52,7 @@ body {
 
 .socials-grid {
   width: 60%;
-  margin-left: 40px;
+
   display: grid;
   grid-template-columns: repeat(3 ,1fr);
   grid-gap: 5px;
@@ -63,7 +67,7 @@ body {
 .page-display {
   overflow-y: scroll;
   display: grid;
-  display: flex;
+
 
 }
 
@@ -75,7 +79,7 @@ body {
 
 .release-image {
   margin: 3% 0 0 10%;
-  height: 80%;
+  height: auto;
 }
 
 .tom {
@@ -85,7 +89,7 @@ body {
 }
 .player-section {
   margin-left: 10%;
-  margin-top: -10%;
+  margin-top: 2%;
 }
 
 .spotify-player {
@@ -156,4 +160,567 @@ body {
 .price {
   font-size: 80px;
   margin: 0;
+}
+
+
+@media screen and (max-width: 991px) {
+     /* start of large tablet styles */
+     .wrapper {
+       display: grid;
+       grid-template-columns: 1fr 4fr;
+       width: 100%;
+       height: 100%;
+     }
+
+     .nav {
+       height: 500px;
+
+       color: black;
+     }
+     .nav a{
+       color: black;
+       text-decoration: none;
+       font-size: 28px;
+     }
+     .nav-list {
+
+       margin: 0 0 20px 0;
+       list-style: none;
+       line-height: 3rem;
+     }
+
+
+     #logo {
+       width: 100%;
+       height: auto;
+     }
+
+     .socials-grid {
+       width: 60%;
+
+       display: grid;
+       grid-template-columns: repeat(3 ,1fr);
+       grid-gap: 5px;
+     }
+
+
+     .grid-item img {
+       width: 40px;
+       height: 40px;
+     }
+
+     .page-display {
+       overflow-y: scroll;
+       display: grid;
+       ;
+
+     }
+
+     .release-section {
+       display: grid;
+       grid-template-columns: 1fr;
+
+     }
+
+     .release-image {
+       margin: 3% 0 0 10%;
+       height: auto;
+     }
+
+     .tom {
+       width: 60%;
+       height: auto;
+
+     }
+     .player-section {
+      margin: 2% 0 0 10%;;
+
+     }
+
+     .spotify-player {
+
+       width: 60%;
+     }
+
+     .tom-socials {
+       padding: 0;
+       margin: 0;
+       grid-gap: 2px;
+       width: 11%;
+     }
+
+     .tom-socials .grid-item img{
+       width: 20px;
+       height: 20px;
+     }
+
+     .tee-container {
+       position: relative;
+       width: 70%;
+       height: auto;
+       margin: 5% 10% 5% 20%;
+
+     }
+     .tee {
+       width: 100%;
+       height: auto;
+
+     }
+
+      .tee-overlay {
+       width: 100%;
+       height: 99.5%;
+       top: 0;
+       left: 0;
+       background-color: black;
+       position: absolute;
+       z-index: 1;
+       opacity: 0;
+       transition: .2s ease;
+     }
+     .tee-container:hover .tee-overlay{
+       opacity: 0.6;
+     }
+
+
+     .tee-text {
+       text-align: center;
+       color:white;
+       position: absolute;
+       z-index: 2;
+       top: 0;
+       left: 0;
+       opacity: 0;
+       width: 100%;
+       height: 60%;
+       align-self: center;
+       padding-top: 40%;
+
+       transition: .2s ease;
+     }
+     .tee-container:hover .tee-text{
+       opacity: 1;
+     }
+
+     .price {
+       font-size: 80px;
+       margin: 0;
+     }
+}
+
+@media screen and (max-width: 767px) {
+     /* start of medium tablet styles */
+     .wrapper {
+       display: grid;
+       grid-template-columns: 1fr 4fr;
+       width: 100%;
+       height: 100%;
+     }
+
+     .nav {
+       height: 500px;
+
+       color: black;
+     }
+     .nav a{
+       color: black;
+       text-decoration: none;
+       font-size: 28px;
+     }
+     .nav-list {
+
+       margin: 0 0 20px 0;
+       list-style: none;
+       line-height: 3rem;
+     }
+
+
+     #logo {
+       width: 100%;
+       height: auto;
+     }
+
+     .socials-grid {
+       width: 60%;
+
+       display: grid;
+       grid-template-columns: repeat(3 ,1fr);
+       grid-gap: 5px;
+     }
+
+
+     .grid-item img {
+       width: 40px;
+       height: 40px;
+     }
+
+     .page-display {
+       overflow-y: scroll;
+       display: grid;
+       ;
+
+     }
+
+     .release-section {
+       display: grid;
+       grid-template-columns: 1fr;
+
+     }
+
+     .release-image {
+       margin: 3% 0 0 10%;
+       height: auto;
+     }
+
+     .tom {
+       width: 60%;
+       height: auto;
+
+     }
+     .player-section {
+      margin: 2% 0 0 10%;;
+
+     }
+
+     .spotify-player {
+
+       width: 60%;
+     }
+
+     .tom-socials {
+       padding: 0;
+       margin: 0;
+       grid-gap: 2px;
+       width: 11%;
+     }
+
+     .tom-socials .grid-item img{
+       width: 20px;
+       height: 20px;
+     }
+
+     .tee-container {
+       position: relative;
+       width: 70%;
+       height: auto;
+       margin: 5% 10% 5% 20%;
+
+     }
+     .tee {
+       width: 100%;
+       height: auto;
+
+     }
+
+      .tee-overlay {
+       width: 100%;
+       height: 99.5%;
+       top: 0;
+       left: 0;
+       background-color: black;
+       position: absolute;
+       z-index: 1;
+       opacity: 0;
+       transition: .2s ease;
+     }
+     .tee-container:hover .tee-overlay{
+       opacity: 0.6;
+     }
+
+
+     .tee-text {
+       text-align: center;
+       color:white;
+       position: absolute;
+       z-index: 2;
+       top: 0;
+       left: 0;
+       opacity: 0;
+       width: 100%;
+       height: 60%;
+       align-self: center;
+       padding-top: 40%;
+
+       transition: .2s ease;
+     }
+     .tee-container:hover .tee-text{
+       opacity: 1;
+     }
+
+     .price {
+       font-size: 80px;
+       margin: 0;
+     }
+}
+
+@media screen and (max-width: 479px) {
+     /* start of phone styles */
+     .wrapper {
+       display: grid;
+       grid-template-columns: 1fr 9fr;
+       width: 100%;
+       height: 100%;
+     }
+    #menuToggle {
+      display: block;
+      position: relative;
+      top: 10px;
+      left: 10px;
+
+      z-index: 1;
+
+      -webkit-user-select: none;
+      user-select: none;
+    }
+
+    #menuToggle input
+    {
+      display: block;
+      width: 40px;
+      height: 32px;
+      position: absolute;
+      top: -7px;
+      left: -5px;
+
+      cursor: pointer;
+
+      opacity: 0; /* hide this */
+      z-index: 2; /* and place it over the hamburger */
+
+      -webkit-touch-callout: none;
+    }
+    #menuToggle span
+  {
+    display: block;
+    width: 23px;
+    height: 4px;
+    margin-bottom: 5px;
+    position: relative;
+
+    background: black;
+    border-radius: 3px;
+
+    z-index: 1;
+
+    transform-origin: 4px 0px;
+
+    transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+                background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+                opacity 0.55s ease;
+  }
+
+  #menuToggle span:first-child
+  {
+    transform-origin: 0% 0%;
+  }
+
+  #menuToggle span:nth-last-child(2)
+  {
+    transform-origin: 0% 100%;
+  }
+
+  /*
+   * Transform all the slices of hamburger
+   * into a crossmark.
+   */
+  #menuToggle input:checked ~ span
+  {
+    opacity: 1;
+    transform: rotate(45deg) translate(8px, 0px);
+    background: black;
+  }
+
+  /*
+   * But let's hide the middle one.
+   */
+  #menuToggle input:checked ~ span:nth-last-child(3)
+  {
+    opacity: 0;
+    transform: rotate(0deg) scale(0.2, 0.2);
+  }
+
+  /*
+   * Ohyeah and the last one should go the other direction
+   */
+  #menuToggle input:checked ~ span:nth-last-child(2)
+  {
+    transform: rotate(-45deg) translate(5px, 5px);
+  }
+
+  /*
+   * Make this absolute positioned
+   * at the top left of the screen
+   */
+  #menu
+  {
+    position: absolute;
+    width: 250px;
+    margin: -100px 0 0 -50px;
+    padding: 50px;
+    padding-top: 125px;
+
+    background: white;
+    list-style-type: none;
+    -webkit-font-smoothing: antialiased;
+    /* to stop flickering of text in safari */
+
+    transform-origin: 0% 0%;
+    transform: translate(-100%, 0);
+
+    transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+  }
+
+  #menu li
+  {
+    padding: 10px 0;
+    font-size: 22px;
+  }
+
+  /*
+   * And let's slide it in from the left
+   */
+  #menuToggle input:checked ~ ul
+  {
+    transform: none;
+  }
+     .nav {
+       height: 500px;
+      z-index: 2;
+       color: black;
+     }
+     .nav ul {
+       padding: 0 0 0 10px;
+     }
+     .nav a{
+       color: black;
+       text-decoration: none;
+       font-size: 18px;
+
+     }
+     .nav-list {
+
+       margin: 0 0 20px 0;
+       list-style: none;
+       line-height: 3rem;
+     }
+
+
+     #logo {
+       width: 100%;
+       height: auto;
+       position: relative;
+       z-index: 5;
+     }
+
+     .socials-grid {
+       width: 40%;
+       margin-left: 10px;
+       display: grid;
+       grid-template-columns: repeat(3 ,1fr);
+       grid-gap: 5px;
+     }
+
+
+     .grid-item img {
+       width: 20px;
+       height: 20px;
+     }
+
+     .page-display {
+       overflow-y: scroll;
+       display: grid;
+       ;
+
+     }
+
+     .release-section {
+       display: grid;
+       grid-template-columns: 1fr;
+
+     }
+
+     .release-image {
+       margin: 5%;
+       height: auto;
+     }
+
+     .tom {
+       width: 100%;
+       height: auto;
+
+     }
+     .player-section {
+        margin: 5%;
+     }
+
+     .spotify-player {
+      margin: 0;
+       width: 100%;
+     }
+
+     .tom-socials {
+       padding: 0;
+       margin: 0;
+       grid-gap: 2px;
+       width: 11%;
+     }
+
+     .tom-socials .grid-item img{
+       width: 15px;
+       height: 15px;
+     }
+
+
+     .tee-container {
+       position: relative;
+       width: 90%;
+       height: auto;
+       margin: 5%;
+
+     }
+     .tee {
+       width: 100%;
+       height: auto;
+
+     }
+
+      .tee-overlay {
+       width: 100%;
+       height: 99.5%;
+       top: 0;
+       left: 0;
+       background-color: black;
+       position: absolute;
+       z-index: 1;
+       opacity: 0;
+       transition: .2s ease;
+     }
+     .tee-container:hover .tee-overlay{
+       opacity: 0.6;
+     }
+
+
+     .tee-text {
+       text-align: center;
+       color:white;
+       position: absolute;
+       z-index: 2;
+       top: 0;
+       left: 0;
+       opacity: 0;
+       width: 100%;
+       height: 60%;
+       align-self: center;
+       padding-top: 40%;
+
+       transition: .2s ease;
+     }
+     .tee-container:hover .tee-text{
+       opacity: 1;
+     }
+
+     .price {
+       font-size: 60px;
+       margin: 0;
+     }
 }

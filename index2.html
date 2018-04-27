@@ -2,41 +2,51 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MilkRaid</title>
     <link rel="stylesheet" href="style2.css">
   </head>
   <body>
     <div class="wrapper">
-    <div class="nav">
-      <a href="index.html"> <img id="logo" src="img/logo-01.png" alt=""></a> 
-        <ul class="nav-list">
-          <li>
-            <a href="index.html">Home</a>
-          </li>
-          <li>
-            <a href="#" onclick="displayPage('releases')">Releases</a>
-          </li>
-          <li>
-             <a href="#" onclick="displayPage('retail')">Retail</a>
-          </li>
+    <div  class="nav">
 
-        </ul>
-        <div class="socials-grid">
-          <div class="grid-item">
-          <a href="">
-            <img src="img/facebook-logo.png" alt="">
-          </a>
-          </div>
-          <div class="grid-item">
-          <a href="">
-            <img src="img/instagram-symbol.png" alt="">
-          </a>
-          </div>
-          <div class="grid-item">
+      <a href="index.html"> <img id="logo" src="img/logo-01.png" alt=""></a>
+        <div id="menuToggle">
+          <input type="checkbox" />
+          <span></span>
+          <span></span>
+          <span></span>
+
+          <ul id="menu" class="nav-list">
+            <li>
+              <a href="index.html">Home</a>
+            </li>
+            <li>
+              <a href="#" onclick="displayPage('releases')">Releases</a>
+            </li>
+            <li>
+               <a href="#" onclick="displayPage('retail')">Retail</a>
+            </li>
+            <div class="socials-grid">
+              <div class="grid-item">
               <a href="">
-                <img src="img/spotify-logo-button.png" alt="">
+                <img src="img/facebook-logo.png" alt="">
               </a>
-          </div>
+              </div>
+              <div class="grid-item">
+              <a href="">
+                <img src="img/instagram-symbol.png" alt="">
+              </a>
+              </div>
+              <div class="grid-item">
+                  <a href="">
+                    <img src="img/spotify-logo-button.png" alt="">
+                  </a>
+              </div>
+            </div>
+          </ul>
+
+
         </div>
       </div>
     <div class="page-display">

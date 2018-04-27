@@ -119,7 +119,8 @@
 				function handle_load(geometry, materials) {
 					var materials = new THREE.MeshPhongMaterial({
 					  color: 0xa878b9,
-						shininess: 200
+						shininess: 200,
+					
 					});
 					var mesh = new THREE.Mesh(geometry, materials)
 					scene.add(mesh);

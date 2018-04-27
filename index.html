@@ -19,34 +19,43 @@
 		<div class="wrapper">
     <div class="nav">
         <a href="index2.html"><img id="logo" src="img/logo-03.png" alt=""></a>
-        <ul class="nav-list">
-          <li>
-            <a href="#">Home</a>
-          </li>
-          <li>
-            <a href="index2.html">Releases</a>
-          </li>
-          <li>
-             <a href="#">Retail</a>
-          </li>
+				<div id="menuToggle">
+          <input type="checkbox" />
+          <span></span>
+          <span></span>
+          <span></span>
 
-        </ul>
-        <div class="socials-grid">
-          <div class="grid-item">
-          <a href="">
-            <img src="img/facebook-logo.png" alt="">
-          </a>
-          </div>
-          <div class="grid-item">
-          <a href="">
-            <img src="img/instagram-symbol.png" alt="">
-          </a>
-          </div>
-          <div class="grid-item">
+          <ul id="menu" class="nav-list">
+
+            <li>
+              <a href="index.html">Home</a>
+            </li>
+            <li>
+              <a href="index2.html" onclick="displayPage('releases')">Releases</a>
+            </li>
+            <li>
+               <a href="index2.html" onclick="displayPage('retail')">Retail</a>
+            </li>
+            <div class="socials-grid">
+              <div class="grid-item">
               <a href="">
-                <img src="img/spotify-logo-button.png" alt="">
+                <img src="img/facebook-logo.png" alt="">
               </a>
-          </div>
+              </div>
+              <div class="grid-item">
+              <a href="">
+                <img src="img/instagram-symbol.png" alt="">
+              </a>
+              </div>
+              <div class="grid-item">
+                  <a href="">
+                    <img src="img/spotify-logo-button.png" alt="">
+                  </a>
+              </div>
+            </div>
+          </ul>
+
+
         </div>
       </div>
     <div class="page-display"></div>
@@ -154,9 +163,7 @@
 				#include <shadowmap_vertex>
 			}
 		</script>
-		<!-- <script src="drawSphere.js">
 
-		</script> -->
 		<script src="drawWater.js"></script>
 
 
