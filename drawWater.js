@@ -1,4 +1,4 @@
-
+		console.log(`don't mind these warnings it's probably fine I reckon, who knows`)
 			if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
 
 			var hash = document.location.hash.substr( 1 );
@@ -6,7 +6,7 @@
 
 			// Texture width for simulation
 			var WIDTH = hash || 128;
-			var NUM_TEXELS = WIDTH * WIDTH;
+			var NUM_TEXELS = WIDTH * WIDTH ;
 
 			// Water size in system units
 			var BOUNDS = 512;
@@ -17,6 +17,7 @@
 			var mouseMoved = false;
 			var mouseCoords = new THREE.Vector2();
 			var raycaster = new THREE.Raycaster();
+			var objects = [];
 
 			var waterMesh;
 			var meshRay;
@@ -49,13 +50,14 @@
 			init();
 			animate();
 
+
 			function init() {
 
 				container = document.createElement( 'div' );
 				document.body.appendChild( container );
 
-				camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 3000 );
-				camera.position.set( 0, 80, 330 );
+				camera = new THREE.PerspectiveCamera( 85, window.innerWidth / window.innerHeight, 1, 3000 );
+				camera.position.set( 0, 280, 1050 );
 				scene = new THREE.Scene();
 
 
@@ -68,37 +70,138 @@
 				sun2.position.set( -100, 350, -200 );
 				scene.add( sun2 );
 
+				var sun3 = new THREE.DirectionalLight( 0xf5fffa, 0.6 );
+				sun3.position.set( -100, -100, 200 );
+				scene.add( sun3 );
+
 				renderer = new THREE.WebGLRenderer( {alpha: true});
 				renderer.setPixelRatio( window.devicePixelRatio );
 				renderer.setSize( window.innerWidth, window.innerHeight );
 				container.appendChild( renderer.domElement );
+				controls = new THREE.OrbitControls( camera, renderer.domElement );
 
-
-				var radius = 40;
+				var radius = 60;
 				var segments = 50;
 				var rings = 30;
+				var gRadius = 0.1;
+				var gSegments = 2;
+				var gRings = 30;
 
-				var geometry = new THREE.SphereGeometry(radius, segments, rings);
-				var material = new THREE.MeshBasicMaterial({
-				  color: 0xF3A2B0,
+				var cubeGeometry = new THREE.SphereGeometry(radius, segments, rings);
+				var cubeMaterial = new THREE.MeshBasicMaterial({
+				  color: 0xa878b9,
 				  wireframe: true
 				});
+				var gravityGeometry = new THREE.SphereGeometry(gRadius, gSegments, gRings);
+				var gravityMaterial = new THREE.MeshBasicMaterial({
 
-				var cube = new THREE.Mesh(geometry, material);
+				});
 
-				scene.add(cube);
+				var centreOfGravity = new THREE.Mesh( gravityGeometry, gravityMaterial);
+
+				scene.add( centreOfGravity );
+				centreOfGravity.position.y = -10;
+				var sunPivot = new THREE.Object3D();
+				centreOfGravity.add( sunPivot );
 
 
+				var cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
+				cube.position.z = 500;
+				cube.position.y = 550;
+				cube.orbPos = { z: 0, y: 0, x:0}
+				sunPivot.orb = {y: 0.01}
+
+				sunPivot.add( cube );
+				objects.push( cube );
+				var loader = new THREE.JSONLoader();
+				loader.load ('milkRaid.json', handle_load);
+
+				function handle_load(geometry, materials) {
+					var materials = new THREE.MeshPhongMaterial({
+					  color: 0xa878b9,
+						shininess: 200
+					});
+					var mesh = new THREE.Mesh(geometry, materials)
+					scene.add(mesh);
+					mesh.position.z = -140;
+					mesh.position.y = -240;
+					mesh.position.x = -170
+
+					mesh.scale.set(1.15,1.15,1.15)
+
+					var starsGeometry = new THREE.Geometry();
+
+for ( var i = 0; i < 10000; i ++ ) {
+
+	var star = new THREE.Vector3();
+	star.x = THREE.Math.randFloatSpread( 2400 );
+	star.y = THREE.Math.randFloatSpread( 2400 );
+	star.z = THREE.Math.randFloatSpread( 2400 );
+
+	starsGeometry.vertices.push( star );
+
+}
+
+var starsMaterial = new THREE.PointsMaterial( { color: 0xFFFFFFF } );
+
+var starField = new THREE.Points( starsGeometry, starsMaterial );
+
+scene.add( starField );
+
+var dragControls = new THREE.DragControls( objects, camera, renderer.domElement );
+
+	dragControls.addEventListener( 'dragstart', function ( event ) { controls.enabled = false; } )
+	dragControls.addEventListener( 'dragend', function ( event ) { controls.enabled = true; } )
+
+
+					var render = function() {
+					  requestAnimationFrame(render);
+						starField.rotation.y += 0.001
+					  renderer.render(scene, camera);
+					};
+
+					render();
+
+				}
+
+var i = 0;
 
 
 
 				var render = function() {
 				  requestAnimationFrame(render);
-					cube.position.y = 160;
-					cube.position.z = 120;
+					sunPivot.rotation.y += sunPivot.orb.y
+
+					if (controls.enabled === false) {
+
+
+						sunPivot.rotation.y = 0;
+						sunPivot.orb.y = 0;
+
+					}
+
+					cube.position.z += cube.orbPos.z
+					cube.position.y += cube.orbPos.y
+
+
+					if ((cube.position.z <= 0)) {
+						cube.position.z = 0;
+						sunPivot.rotation.y = 0;
+						cube.orbPos.y -= i
+						setInterval(function(){ i += 0.0098 }, 300);
+
+					}
+
+
+
+					if ((cube.position.y <= -20)) {
+						cube.position.y = -20;
+						cube.orbPos.y = 0;
+
+					}
 					cube.rotation.x += 0.009;
-				 cube.rotation.y += 0.001;
-				 cube.rotation.z += 0.001;
+				 	cube.rotation.y += 0.001;
+				 	cube.rotation.z += 0.001;
 
 
 				  renderer.render(scene, camera);
@@ -106,6 +209,13 @@
 
 				render();
 
+				document.addEventListener("keydown", onDocumentKeyDown, false);
+				function onDocumentKeyDown(event) {
+				if (event.keyCode === 71 ) {
+				cube.orbPos.z += -1;
+
+			}
+		};
 
 
 
@@ -125,14 +235,14 @@
 
 				} , false );
 
-				window.addEventListener( 'resize', onWindowResize, false );
 
+				window.addEventListener( 'resize', onWindowResize, false );
 
 				var gui = new dat.GUI();
 
 				var effectController = {
 					mouseSize: 20.0,
-					viscosity: 0.03
+					viscosity: 0.02
 				};
 
 				var valuesChanger = function() {
@@ -201,6 +311,7 @@
 				waterMesh.rotation.x = - Math.PI / 2;
 				waterMesh.matrixAutoUpdate = false;
 				waterMesh.updateMatrix();
+
 
 				scene.add( waterMesh );
 
@@ -355,6 +466,8 @@ smoothWater();
 			}
 
 			function render() {
+
+				//Cube
 
 				// Set uniforms: mouse interaction
 				var uniforms = heightmapVariable.material.uniforms;

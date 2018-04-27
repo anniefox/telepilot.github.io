@@ -8,25 +8,61 @@
 
 	</head>
 	<body>
-		<div id="overlay">	<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div></div>
+
+		<!-- NO COWS WERE HURT IN THE MAKING OF THIS WEBSITE -->
+		<!-- *****  NOT TO SCALE  ***** -->
+		<div id="overlay"><div id='loader'><h2>Loading</h2></div></div>
 
 		<div id="info">
 		 <span id="waterSize"></span> <span id="options"></span>
 		</div>
+		<div class="wrapper">
+    <div class="nav">
+        <a href="index2.html"><img id="logo" src="img/logo-03.png" alt=""></a>
+        <ul class="nav-list">
+          <li>
+            <a href="#">Home</a>
+          </li>
+          <li>
+            <a href="index2.html">Releases</a>
+          </li>
+          <li>
+             <a href="#">Retail</a>
+          </li>
 
-		<script src="loader.js">
+        </ul>
+        <div class="socials-grid">
+          <div class="grid-item">
+          <a href="">
+            <img src="img/facebook-logo.png" alt="">
+          </a>
+          </div>
+          <div class="grid-item">
+          <a href="">
+            <img src="img/instagram-symbol.png" alt="">
+          </a>
+          </div>
+          <div class="grid-item">
+              <a href="">
+                <img src="img/spotify-logo-button.png" alt="">
+              </a>
+          </div>
+        </div>
+      </div>
+    <div class="page-display"></div>
 
-		</script>
-		<script src="build/three.js"></script>
+	<script src="loader.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/92/three.min.js"></script>
+		<script src="js/controls/DragControls.js"></script>
 		<script src="js/Detector.js"></script>
 		<script src="js/libs/stats.min.js"></script>
 		<script src="js/libs/dat.gui.min.js"></script>
-		<script src="js/controls/OrbitControls.js"></script>
+		<script src="js/controls/OrbitControls.js">
+		 </script>
 		<script src="js/SimplexNoise.js"></script>
-
 		<script src="js/GPUComputationRenderer.js"></script>
-
-
+		<script src="src/loaders/JSONLoader.js"></script>
+				<script src="js/controls/DragControls.js"></script>
 		<!-- This is the 'compute shader' for the water heightmap: -->
 		<script id="heightmapFragmentShader" type="x-shader/x-fragment">
 			#include <common>
@@ -62,9 +98,7 @@
 		</script>
 
 		<!-- This is just a smoothing 'compute shader' for using manually: -->
-		<script src="smoothFragmentShader.js" id="smoothFragmentShader" type="x-shader/x-fragment">
-
-		</script>
+		<script src="smoothFragmentShader.js" id="smoothFragmentShader" type="x-shader/x-fragment"></script>
 
 		<!-- This is the water visualization shader, copied from the MeshPhongMaterial and modified: -->
 		<script  id="waterVertexShader" type="x-shader/x-vertex">
@@ -120,10 +154,11 @@
 				#include <shadowmap_vertex>
 			}
 		</script>
+		<!-- <script src="drawSphere.js">
 
-		<script src="drawWater.js">
+		</script> -->
+		<script src="drawWater.js"></script>
 
-		</script>
 
 	</body>
 </html>

@@ -1,14 +1,30 @@
+
+html {
+  box-sizing: border-box;
+}
+@font-face {
+  font-family: "Sequel-100";
+  src: url("fonts/OGJ Type Design - Sequel 100 Wide 95 Wide.otf")format("opentype")
+}
+
 body {
-  background-image: url(images/hLecp04.jpg);
+
   margin: 0px;
   overflow: hidden;
   background-size:     cover;                      /* <------ */
     background-repeat:   no-repeat;
     background-position: center center;
+    background-color: black;
+    color: white;
+    font-family: "Sequel-100"
 }
+
+
+
 
 #info {
   visibility: hidden;
+  position: absolute;
 
 }
 .dg {
@@ -18,73 +34,79 @@ body {
 
 canvas {
   background: transparent;
+  position: absolute;
+  top: 0;
+  left: 0;
+
 }
 
-.lds-ellipsis {
-  display: inline-block;
-  position: relative;
-  width: 64px;
-  height: 64px;
-}
-.lds-ellipsis div {
-  position: absolute;
-  top: 27px;
-  width: 11px;
-  height: 11px;
-  border-radius: 50%;
-  background: #fff;
-  animation-timing-function: cubic-bezier(0, 1, 1, 0);
-}
-.lds-ellipsis div:nth-child(1) {
-  left: 6px;
-  animation: lds-ellipsis1 0.6s infinite;
-}
-.lds-ellipsis div:nth-child(2) {
-  left: 6px;
-  animation: lds-ellipsis2 0.6s infinite;
-}
-.lds-ellipsis div:nth-child(3) {
-  left: 26px;
-  animation: lds-ellipsis2 0.6s infinite;
-}
-.lds-ellipsis div:nth-child(4) {
-  left: 45px;
-  animation: lds-ellipsis3 0.6s infinite;
-}
-@keyframes lds-ellipsis1 {
-  0% {
-    transform: scale(0);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
-@keyframes lds-ellipsis3 {
-  0% {
-    transform: scale(1);
-  }
-  100% {
-    transform: scale(0);
-  }
-}
-@keyframes lds-ellipsis2 {
-  0% {
-    transform: translate(0, 0);
-  }
-  100% {
-    transform: translate(19px, 0);
-  }
-}
 
 #overlay {
   height: 100%;
   width: 100%;
   background: black;
   position: fixed;
+  z-index: 100;
   left:0;
   top: 0;
   display: flex;
+  opacity: 1;
   justify-content: center;
   align-items: center;
+    transition: opacity 200ms ease-in-out;
+}
+
+
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  width: 100%;
+  height: 100%;
+}
+
+.nav {
+  height: 500px;
+  position: relative;
+  z-index: 1;
+
+}
+.nav a{
+
+  text-decoration: none;
+  font-size: 36px;
+  color: white;
+}
+.nav-list {
+
+  margin: 0 0 20px 0;
+  list-style: none;
+  line-height: 3rem;
+}
+
+
+#logo {
+  width: 100%;
+  height: auto;
+}
+
+.socials-grid {
+  width: 60%;
+  margin-left: 40px;
+  display: grid;
+  grid-template-columns: repeat(3 ,1fr);
+  grid-gap: 5px;
+}
+
+
+.grid-item img {
+  width: 40px;
+  height: 40px;
+}
+
+.page-display {
+  overflow-y: scroll;
+  display: grid;
+  display: flex;
 
 }
