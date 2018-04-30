@@ -81,7 +81,12 @@ input {
   color: white;
   text-decoration: none;
   font-size: 36px;
+  padding: 0 5px;
 }
+/* .nav li a:hover{
+  background-color: #a878b9;
+
+} */
 .nav-list {
 
   margin: 0 0 20px 0;

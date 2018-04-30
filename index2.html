@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MilkRaid</title>
     <link rel="stylesheet" href="style2.css">
+
   </head>
   <body>
     <div class="wrapper">
@@ -22,35 +23,38 @@
               <a href="index.html">Home</a>
             </li>
             <li>
-              <a href="#" onclick="displayPage('releases')">Releases</a>
+              <a href="#releases" onclick="displayPage('releases')">Releases</a>
             </li>
             <li>
-               <a href="#" onclick="displayPage('retail')">Retail</a>
+               <a href="#retail" onclick="displayPage('retail')">Retail</a>
             </li>
-            <div class="socials-grid">
-              <div class="grid-item">
-              <a href="">
-                <img src="img/facebook-logo.png" alt="">
-              </a>
+            <li>
+              <div class="socials-grid">
+                <div class="grid-item">
+                <a href="">
+                  <img src="img/facebook-logo.png" alt="">
+                </a>
+                </div>
+                <div class="grid-item">
+                <a href="">
+                  <img src="img/instagram-symbol.png" alt="">
+                </a>
+                </div>
+                <div class="grid-item">
+                    <a href="">
+                      <img src="img/spotify-logo-button.png" alt="">
+                    </a>
+                </div>
               </div>
-              <div class="grid-item">
-              <a href="">
-                <img src="img/instagram-symbol.png" alt="">
-              </a>
-              </div>
-              <div class="grid-item">
-                  <a href="">
-                    <img src="img/spotify-logo-button.png" alt="">
-                  </a>
-              </div>
-            </div>
+            </li>
+
           </ul>
 
 
         </div>
       </div>
     <div class="page-display">
-      <section id="releases" class="release-section section">
+      <section id="releases"  class="release-section section ">
         <div class="release-image">
           <img src="img/tom.jpg" alt="" class="tom">
           <h2>Tom Dunne</h2>
@@ -74,7 +78,7 @@
         </div>
         <div class="player-section"><iframe class="spotify-player" src="https://open.spotify.com/embed/track/3euakHnMLK3150TiX0Appv"  frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe></div>
       </section>
-      <section id="retail" style="display: none"class="retail-section section">
+      <section id="retail" class="retail-section section ">
         <div class="tee-container">
           <img src="img/tee_one_front-white.jpg" alt="" class="tee">
           <div class="tee-overlay"></div>
@@ -95,11 +99,14 @@
           <div class="tee-overlay"></div>
           <div class="tee-text"><h1>Logo Tee <br> black </h1><h1 class="price">£15</h1></div>
         </div>
+        </section>
       </div>
-    </section>
+
     </div>
 
+    <script type="text/javascript" src="script.js">
 
+    </script>
     <script type="text/javascript" src="script2.js"></script>
   </body>
 </html>
