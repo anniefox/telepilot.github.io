@@ -1,5 +1,3 @@
-
-window.onload = function() {
   var url = window.location.href;
   var urlCheck = url.substr(url.lastIndexOf('#') + 1)
   console.log(urlCheck)
@@ -13,6 +11,3 @@ window.onload = function() {
 
   element.classList.toggle("displayit");
  }
-
-
-};
