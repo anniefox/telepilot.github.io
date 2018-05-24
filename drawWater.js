@@ -74,6 +74,7 @@
 				sun3.position.set( -100, -100, 200 );
 				scene.add( sun3 );
 
+
 				renderer = new THREE.WebGLRenderer( {alpha: true});
 				renderer.setPixelRatio( window.devicePixelRatio );
 				renderer.setSize( window.innerWidth, window.innerHeight );
@@ -108,6 +109,9 @@
 				var cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
 				cube.position.z = 500;
 				cube.position.y = 550;
+				var zp = 500;
+				var yp = 550;
+				var xp = 0;
 				cube.orbPos = { z: 0, y: 0, x:0}
 				sunPivot.orb = {y: 0.01}
 
@@ -120,7 +124,7 @@
 					var materials = new THREE.MeshPhongMaterial({
 					  color: 0xa878b9,
 						shininess: 200,
-					
+
 					});
 					var mesh = new THREE.Mesh(geometry, materials)
 					scene.add(mesh);
@@ -167,39 +171,49 @@ var dragControls = new THREE.DragControls( objects, camera, renderer.domElement 
 
 var i = 0;
 
+if (controls.enabled === false) {
+
+	// sunPivot.applyMatrix()
 
 
+}
+sunPivot.rotation.y = 0;
+	var accumilated
 				var render = function() {
 				  requestAnimationFrame(render);
-					sunPivot.rotation.y += sunPivot.orb.y
 
-					if (controls.enabled === false) {
+					 if(controls.enabled) {
+						sunPivot.orb = {y: 0.01}
+						sunPivot.rotation.y += sunPivot.orb.y;
 
+					  accumilated = 0;
+						accumilated += sunPivot.rotation.y
+						console.log(accumilated)
+					} else
+					{
 
-						sunPivot.rotation.y = 0;
-						sunPivot.orb.y = 0;
-
-					}
-
-					cube.position.z += cube.orbPos.z
-					cube.position.y += cube.orbPos.y
-
-
-					if ((cube.position.z <= 0)) {
-						cube.position.z = 0;
-						sunPivot.rotation.y = 0;
-						cube.orbPos.y -= i
-						setInterval(function(){ i += 0.0098 }, 300);
 
 					}
 
 
+					// cube.position.z += cube.orbPos.z
+					// cube.position.y += cube.orbPos.y
 
-					if ((cube.position.y <= -20)) {
-						cube.position.y = -20;
-						cube.orbPos.y = 0;
-
-					}
+					// if ((cube.position.z <= 0)) {
+					// 	cube.position.z = 0;
+					// 	sunPivot.rotation.y = 0;
+					// 	cube.orbPos.y -= i
+					// 	setInterval(function(){ i += 0.0098 }, 300);
+					//
+					// }
+					//
+					//
+					//
+					// if ((cube.position.y <= -40 && cube.position.z <= 0)) {
+					// 	cube.position.y = -40;
+					// 	cube.orbPos.y = 0;
+					//
+					// }
 					cube.rotation.x += 0.009;
 				 	cube.rotation.y += 0.001;
 				 	cube.rotation.z += 0.001;
@@ -218,6 +232,10 @@ var i = 0;
 			}
 		};
 
+		if (cube.position.y <= 400 ) {
+		cube.orbPos.z += -1;
+
+		}
 
 
 				document.addEventListener( 'mousemove', onDocumentMouseMove, false );
