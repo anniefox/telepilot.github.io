@@ -110,6 +110,7 @@ input {
 .spotify-player {
 
   width: 60%;
+  height: auto;
 }
 
 .tom-socials {
@@ -678,7 +679,7 @@ input {
 
      }
 
-    
+
 
      .release-image {
        margin: 5%;
