@@ -188,7 +188,7 @@ sunPivot.rotation.y = 0;
 
 					  accumilated = 0;
 						accumilated += sunPivot.rotation.y
-						
+
 					} else
 					{
 
@@ -496,13 +496,17 @@ smoothWater();
 
 					var intersects = this.raycaster.intersectObject( meshRay );
 
-					if ( intersects.length > 0 ) {
+					if ( intersects.length > 0 && /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini| SAMSUNG|Samsung|SGH-[I|N|T]|GT-[I|N]|SM-[N|P|T|Z]|SHV-E|SCH-[I|J|R|S]|SPH-L/i.test(navigator.userAgent) ) {
 					    var point = intersects[ 0 ].point;
 					    uniforms.mousePos.value.set( point.x, point.z );
-
+							controls.enabled = false;
+					} else if ( intersects.length > 0 ) {
+						var point = intersects[ 0 ].point;
+						uniforms.mousePos.value.set( point.x, point.z );
 					}
 					else {
 					    uniforms.mousePos.value.set( 10000, 10000 );
+							controls.enabled = true;
 					}
 
 					mouseMoved = false;
