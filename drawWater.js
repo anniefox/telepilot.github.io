@@ -188,7 +188,7 @@ sunPivot.rotation.y = 0;
 
 					  accumilated = 0;
 						accumilated += sunPivot.rotation.y
-						console.log(accumilated)
+						
 					} else
 					{
 
