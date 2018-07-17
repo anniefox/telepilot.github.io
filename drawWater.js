@@ -1,4 +1,4 @@
-		console.log(`don't mind these warnings it's probably fine I reckon, who knows`)
+
 			if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
 
 			var hash = document.location.hash.substr( 1 );
@@ -18,7 +18,7 @@
 			var mouseCoords = new THREE.Vector2();
 			var raycaster = new THREE.Raycaster();
 			var objects = [];
-
+			var geometry;
 			var waterMesh;
 			var meshRay;
 			var gpuCompute;
@@ -125,7 +125,7 @@
 					  color: 0xa878b9,
 						shininess: 200,
 
-					});
+					})
 					var mesh = new THREE.Mesh(geometry, materials)
 					scene.add(mesh);
 					mesh.position.z = -140;
@@ -133,7 +133,7 @@
 					mesh.position.x = -170
 
 					mesh.scale.set(1.15,1.15,1.15)
-
+				}
 					var starsGeometry = new THREE.Geometry();
 
 for ( var i = 0; i < 10000; i ++ ) {
@@ -159,15 +159,7 @@ var dragControls = new THREE.DragControls( objects, camera, renderer.domElement 
 	dragControls.addEventListener( 'dragend', function ( event ) { controls.enabled = true; } )
 
 
-					var render = function() {
-					  requestAnimationFrame(render);
-						starField.rotation.y += 0.001
-					  renderer.render(scene, camera);
-					};
 
-					render();
-
-				}
 
 var i = 0;
 
@@ -191,9 +183,9 @@ sunPivot.rotation.y = 0;
 
 					} else
 					{
-
-
 					}
+					starField.rotation.y += 0.001
+
 
 
 					// cube.position.z += cube.orbPos.z
@@ -499,20 +491,21 @@ smoothWater();
 					if ( intersects.length > 0 && /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini| SAMSUNG|Samsung|SGH-[I|N|T]|GT-[I|N]|SM-[N|P|T|Z]|SHV-E|SCH-[I|J|R|S]|SPH-L/i.test(navigator.userAgent) ) {
 					    var point = intersects[ 0 ].point;
 					    uniforms.mousePos.value.set( point.x, point.z );
-							controls.enabled = false;
+
 					} else if ( intersects.length > 0 ) {
 						var point = intersects[ 0 ].point;
 						uniforms.mousePos.value.set( point.x, point.z );
+
 					}
 					else {
 					    uniforms.mousePos.value.set( 10000, 10000 );
-							controls.enabled = true;
-					}
 
+					}
 					mouseMoved = false;
 				}
 				else {
 					uniforms.mousePos.value.set( 10000, 10000 );
+
 				}
 
 				// Do the gpu computation
