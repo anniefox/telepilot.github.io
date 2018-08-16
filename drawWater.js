@@ -25,7 +25,7 @@
 			var heightmapVariable;
 			var waterUniforms;
 			var smoothShader;
-
+			var camPosZ = 0
 			var simplex = new SimplexNoise();
 
 			var windowHalfX = window.innerWidth / 2;
@@ -57,7 +57,7 @@
 				document.body.appendChild( container );
 
 				camera = new THREE.PerspectiveCamera( 85, window.innerWidth / window.innerHeight, 1, 3000 );
-				camera.position.set( 0, 280, 1050 );
+				camera.position.set( 0, 480, 1050 );
 				scene = new THREE.Scene();
 
 
@@ -80,6 +80,12 @@
 				renderer.setSize( window.innerWidth, window.innerHeight );
 				container.appendChild( renderer.domElement );
 				controls = new THREE.OrbitControls( camera, renderer.domElement );
+				controls.enableDampning = true;
+				controls.minDistance = 400;
+				controls.maxDistance = 1500
+
+
+
 
 				var radius = 60;
 				var segments = 50;
@@ -90,7 +96,8 @@
 
 				var cubeGeometry = new THREE.SphereGeometry(radius, segments, rings);
 				var cubeMaterial = new THREE.MeshBasicMaterial({
-				  color: 0xa878b9,
+				  color: 0xa878b9
+					,
 				  wireframe: true
 				});
 				var gravityGeometry = new THREE.SphereGeometry(gRadius, gSegments, gRings);
@@ -117,8 +124,25 @@
 
 				sunPivot.add( cube );
 				objects.push( cube );
+				var loader2 = new THREE.JSONLoader();
+				loader2.load('newcowmilk.json', handle_load2);
+
+				function handle_load2(geometry, materials2) {
+					var materials2 = new THREE.MeshBasicMaterial({
+					  color: 0x000000,
+
+
+					})
+					var mesh2 = new THREE.Mesh(geometry, materials2)
+					scene.add(mesh2);
+
+					mesh2.position.z = -20;
+
+					mesh2.position.x = 10;
+					mesh2.scale.set(30,30,30)
+				}
 				var loader = new THREE.JSONLoader();
-				loader.load ('milkRaid.json', handle_load);
+				loader.load('milkRaid.json', handle_load);
 
 				function handle_load(geometry, materials) {
 					var materials = new THREE.MeshPhongMaterial({
@@ -134,6 +158,7 @@
 
 					mesh.scale.set(1.15,1.15,1.15)
 				}
+
 					var starsGeometry = new THREE.Geometry();
 
 for ( var i = 0; i < 10000; i ++ ) {
@@ -153,81 +178,139 @@ var starField = new THREE.Points( starsGeometry, starsMaterial );
 
 scene.add( starField );
 
-var dragControls = new THREE.DragControls( objects, camera, renderer.domElement );
-
-	dragControls.addEventListener( 'dragstart', function ( event ) { controls.enabled = false; } )
-	dragControls.addEventListener( 'dragend', function ( event ) { controls.enabled = true; } )
+// var dragControls = new THREE.DragControls( objects, camera, renderer.domElement );
+// 	var clicked = true;
+// 	dragControls.addEventListener( 'dragstart', function ( event ) { controls.enabled = f;
+// 		clicked = false;
+// 	cube.orbPos.z -= 1; } )
+// 	dragControls.addEventListener( 'dragend', function ( event ) { controls.enabled = false;
+//
+//
+// 	 } )
 
 
 
 
 var i = 0;
+//
+// if (controls.enabled === false) {
+//
+// 	sunPivot.applyMatrix()
+//
+//
+// }
+document.addEventListener("keydown", onDocumentKeyDown1, false);
+function onDocumentKeyDown1(event) {
+if (event.keyCode === 69 ) {
 
-if (controls.enabled === false) {
-
-	// sunPivot.applyMatrix()
-
-
-}
+if (disabled) {
+ controls.minDistance = 48;
+ controls.maxDistance = 4800;
+camera.position.set( 0, 480, 1050 );
+controls.enablePan = false;
+controls.enableRotate = false;
+disabled = false
+console.log(disabled)
+}  else {
+	controls.minDistance = 400;
+  controls.maxDistance = 1500;
+controls.enablePan = true;
+controls.enableRotate = true;
+disabled = true
+console.log(disabled)
+}}}
 sunPivot.rotation.y = 0;
 	var accumilated
-				var render = function() {
-				  requestAnimationFrame(render);
+	var raycaster = new THREE.Raycaster();
+var mouse = new THREE.Vector2();
+var disabled = true
+function onMouseMove( event ) {
 
-					 if(controls.enabled) {
+	// calculate mouse position in normalized device coordinates
+	// (-1 to +1) for both components
+
+	mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
+	mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
+
+}
+				var animate1 = function() {
+				  requestAnimationFrame(animate1);
+
+					 // if(clicked) {
 						sunPivot.orb = {y: 0.01}
 						sunPivot.rotation.y += sunPivot.orb.y;
 
 					  accumilated = 0;
 						accumilated += sunPivot.rotation.y
 
-					} else
-					{
-					}
+					// } else
+					// {
+					// }
 					starField.rotation.y += 0.001
+					// crazy shite
+	// 				raycaster.setFromCamera(mouse, camera)
+	// 				var intersects = raycaster.intersectObjects( sunPivot.children )
+	// 				for ( var i = 0; i < intersects.length; i++ ) {
+	//
+	// 	intersects[ i ].recursive.material.color.set( 0xff0000 * Math.random());
+	//
+	// }
 
 
 
-					// cube.position.z += cube.orbPos.z
-					// cube.position.y += cube.orbPos.y
+					cube.position.z += cube.orbPos.z
+					cube.position.y += cube.orbPos.y
+					if (!disabled && camera.position.z <= controls.minDistance) {
+								camera.position.z = controls.maxDistance - 150
+								camera.position.y = 1780}
+					  if (!disabled && camera.position.z >= (controls.maxDistance)) {
+						camera.position.z = controls.minDistance
+						camera.position.y = 280
+					}
 
-					// if ((cube.position.z <= 0)) {
-					// 	cube.position.z = 0;
-					// 	sunPivot.rotation.y = 0;
-					// 	cube.orbPos.y -= i
-					// 	setInterval(function(){ i += 0.0098 }, 300);
-					//
-					// }
-					//
-					//
-					//
-					// if ((cube.position.y <= -40 && cube.position.z <= 0)) {
-					// 	cube.position.y = -40;
-					// 	cube.orbPos.y = 0;
-					//
-					// }
+					if ((cube.position.z <= 0)) {
+						cube.position.z = 0;
+						sunPivot.rotation.y = 0;
+						cube.orbPos.y -= i
+						setInterval(function(){ i += 0.0098 }, 300);
+						if (cube.scale.y < 20) {
+								cube.scale.set(1 + (i /50),1 + i /50,1 + i/50)
+						}
+						if (cube.position.y <= 0) {
+								cube.material.color.setHex( 0xa878b9 * (i+1) );
+						}
+
+					}
+
+
+
+					if ((cube.position.y <= -50 && cube.position.z <= 0)) {
+						cube.position.y = -50;
+						cube.orbPos.y = 0;
+
+					}
 					cube.rotation.x += 0.009;
 				 	cube.rotation.y += 0.001;
 				 	cube.rotation.z += 0.001;
+controls.update()
 
+				  // renderer.render(scene, camera);
+				}
 
-				  renderer.render(scene, camera);
-				};
-
-				render();
+				animate1();
 
 				document.addEventListener("keydown", onDocumentKeyDown, false);
 				function onDocumentKeyDown(event) {
 				if (event.keyCode === 71 ) {
-				cube.orbPos.z += -1;
+				cube.orbPos.z -= 1;
 
-			}
-		};
+			}}
 
-		if (cube.position.y <= 400 ) {
-		cube.orbPos.z += -1;
 
-		}
+		// if (cube.position.y <= 400 ) {
+		// cube.orbPos.z += -1;
+		//
+		// }
 
 
 				document.addEventListener( 'mousemove', onDocumentMouseMove, false );
@@ -252,8 +335,8 @@ sunPivot.rotation.y = 0;
 				var gui = new dat.GUI();
 
 				var effectController = {
-					mouseSize: 20.0,
-					viscosity: 0.02
+					mouseSize: 10.0,
+					viscosity: 0.008
 				};
 
 				var valuesChanger = function() {

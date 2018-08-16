@@ -55,9 +55,14 @@ canvas {
   align-items: center;
     transition: opacity 200ms ease-in-out;
 }
-
-
-
+#loader {
+  text-align: center;
+}
+#loader a {
+  margin-top: 5%;
+  text-decoration: none;
+  color: white;
+}
 input {
   display: none;
 }
@@ -386,3 +391,4 @@ input {
        width: 20px;
        height: 20px;
      }
+}
