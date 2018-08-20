@@ -56,7 +56,7 @@
 				container = document.createElement( 'div' );
 				document.body.appendChild( container );
 
-				camera = new THREE.PerspectiveCamera( 85, window.innerWidth / window.innerHeight, 1, 4000 );
+				camera = new THREE.PerspectiveCamera( 85, window.innerWidth / window.innerHeight, 1, 3500 );
 				camera.position.set( 0, 480, 1050 );
 				scene = new THREE.Scene();
 
@@ -82,10 +82,7 @@
 				controls = new THREE.OrbitControls( camera, renderer.domElement );
 				controls.enableDampning = true;
 				controls.minDistance = 400;
-				controls.maxDistance = 1500
-
-
-
+				controls.maxDistance = 4500
 
 				var radius = 60;
 				var segments = 50;
@@ -124,6 +121,7 @@
 
 				sunPivot.add( cube );
 				objects.push( cube );
+
 				var loader2 = new THREE.JSONLoader();
 				loader2.load('models/newcowmilk.json', handle_load2);
 
@@ -177,16 +175,16 @@ var starsMaterial = new THREE.PointsMaterial( { color: 0xFFFFFFF } );
 var starField = new THREE.Points( starsGeometry, starsMaterial );
 
 scene.add( starField );
+var clicked = false;
+var dragControls = new THREE.DragControls( objects, camera, renderer.domElement );
+	clicked = true
+	dragControls.addEventListener( 'dragstart', function ( event ) { controls.enabled = true;
+		clicked = false;
+	 } )
+	dragControls.addEventListener( 'dragend', function ( event ) { controls.enabled = true;
 
-// var dragControls = new THREE.DragControls( objects, camera, renderer.domElement );
-// 	var clicked = true;
-// 	dragControls.addEventListener( 'dragstart', function ( event ) { controls.enabled = f;
-// 		clicked = false;
-// 	cube.orbPos.z -= 1; } )
-// 	dragControls.addEventListener( 'dragend', function ( event ) { controls.enabled = false;
-//
-//
-// 	 } )
+
+	 } )
 
 
 
@@ -199,6 +197,7 @@ var i = 0;
 //
 //
 // }
+
 document.addEventListener("keydown", onDocumentKeyDown1, false);
 function onDocumentKeyDown1(event) {
 if (event.keyCode === 69 ) {
@@ -236,16 +235,16 @@ function onMouseMove( event ) {
 				var animate1 = function() {
 				  requestAnimationFrame(animate1);
 
-					 // if(clicked) {
+					 if(clicked) {
 						sunPivot.orb = {y: 0.01}
 						sunPivot.rotation.y += sunPivot.orb.y;
 
 					  accumilated = 0;
 						accumilated += sunPivot.rotation.y
 
-					// } else
-					// {
-					// }
+					} else
+					{
+					}
 					starField.rotation.y += 0.001
 					// crazy shite
 	// 				raycaster.setFromCamera(mouse, camera)
@@ -313,9 +312,9 @@ controls.update()
 		// }
 
 
-				document.addEventListener( 'mousemove', onDocumentMouseMove, false );
-				document.addEventListener( 'touchstart', onDocumentTouchStart, false );
-				document.addEventListener( 'touchmove', onDocumentTouchMove, false );
+				container.addEventListener( 'mousemove', onDocumentMouseMove, false );
+				container.addEventListener( 'touchstart', onDocumentTouchStart, false );
+				container.addEventListener( 'touchmove', onDocumentTouchMove, false );
 
 				document.addEventListener( 'keydown', function( event ) {
 
