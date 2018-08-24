@@ -585,10 +585,11 @@ smoothWater();
 							controls.enabled = true
 					}
 					mouseMoved = false;
+					controls.enabled = true
 				}
 				else {
 					uniforms.mousePos.value.set( 10000, 10000 );
-
+					controls.enabled = true
 				}
 
 				// Do the gpu computation
