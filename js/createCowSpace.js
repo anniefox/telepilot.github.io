@@ -571,9 +571,10 @@ smoothWater();
 					var intersects = this.raycaster.intersectObject( meshRay );
 
 					if ( intersects.length > 0 && /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini| SAMSUNG|Samsung|SGH-[I|N|T]|GT-[I|N]|SM-[N|P|T|Z]|SHV-E|SCH-[I|J|R|S]|SPH-L/i.test(navigator.userAgent) ) {
+						controls.enabled = false
 					    var point = intersects[ 0 ].point;
 					    uniforms.mousePos.value.set( point.x, point.z );
-							controls.enabled = false
+
 
 					} else if ( intersects.length > 0 ) {
 						var point = intersects[ 0 ].point;
