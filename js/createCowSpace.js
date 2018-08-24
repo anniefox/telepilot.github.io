@@ -30,7 +30,6 @@
 			var windowHalfX = window.innerWidth / 2;
 			var windowHalfY = window.innerHeight / 2;
 
-			document.getElementById( 'waterSize' ).innerText = WIDTH + ' x ' + WIDTH;
 
 			function change(n) {
 				location.hash = n;
@@ -39,12 +38,7 @@
 			}
 
 
-			var options = '';
-			for ( var i = 4; i < 10; i++ ) {
-				var j = Math.pow( 2, i );
-				options += '<a href="#" onclick="return change(' + j + ')">' + j + 'x' + j + '</a> ';
-			}
-			document.getElementById('options').innerHTML = options;
+
 
 			init();
 			animate();
@@ -55,14 +49,14 @@
 
 				container = document.createElement( 'div' );
 				document.body.appendChild( container );
-
+				//Camera
 				camera = new THREE.PerspectiveCamera( 85, window.innerWidth / window.innerHeight, 1, 4500 );
 				camera.position.set( 0, 480, 1050 );
+				//Scene
 				scene = new THREE.Scene();
-
+				//Remove overlay when ALL items fully loaded
 				var loadingManager = new THREE.LoadingManager()
 				loadingManager.onLoad = function(item, loaded, total) {
-					console.log(item,loaded,total)
 
 				    overlay.style.display = 'none';
 
@@ -185,7 +179,7 @@ scene.add( starField );
 var clicked = false;
 var dragControls = new THREE.DragControls( objects, camera, renderer.domElement );
 	clicked = true
-	dragControls.addEventListener( 'dragstart', function ( event ) { controls.enabled = true;
+	dragControls.addEventListener( 'dragstart', function ( event ) { controls.enabled = false;
 		clicked = false;
 	 } )
 	dragControls.addEventListener( 'dragend', function ( event ) { controls.enabled = true;
@@ -197,13 +191,7 @@ var dragControls = new THREE.DragControls( objects, camera, renderer.domElement 
 
 
 var i = 0;
-//
-// if (controls.enabled === false) {
-//
-// 	sunPivot.applyMatrix()
-//
-//
-// }
+
 
 document.addEventListener("keydown", onDocumentKeyDown1, false);
 function onDocumentKeyDown1(event) {
@@ -242,7 +230,7 @@ function onMouseMove( event ) {
 				var animate1 = function() {
 				  requestAnimationFrame(animate1);
 
-					 if(clicked) {
+					 if(controls.enabled) {
 						sunPivot.orb = {y: 0.01}
 						sunPivot.rotation.y += sunPivot.orb.y;
 
@@ -251,7 +239,11 @@ function onMouseMove( event ) {
 
 					} else
 					{
+						sunPivot.rotation.y = accumilated
+
+
 					}
+
 					starField.rotation.y += 0.001
 					// crazy shite
 	// 				raycaster.setFromCamera(mouse, camera)
@@ -581,11 +573,11 @@ smoothWater();
 					if ( intersects.length > 0 && /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini| SAMSUNG|Samsung|SGH-[I|N|T]|GT-[I|N]|SM-[N|P|T|Z]|SHV-E|SCH-[I|J|R|S]|SPH-L/i.test(navigator.userAgent) ) {
 					    var point = intersects[ 0 ].point;
 					    uniforms.mousePos.value.set( point.x, point.z );
-
+							controls.enabled = false
 					} else if ( intersects.length > 0 ) {
 						var point = intersects[ 0 ].point;
 						uniforms.mousePos.value.set( point.x, point.z );
-
+						controls.enabled = true
 					}
 					else {
 					    uniforms.mousePos.value.set( 10000, 10000 );
