@@ -26,7 +26,7 @@
 			var smoothShader;
 			var camPosZ = 0
 			var simplex = new SimplexNoise();
-
+			const overlay = document.getElementById("overlay");
 			var windowHalfX = window.innerWidth / 2;
 			var windowHalfY = window.innerHeight / 2;
 
@@ -49,6 +49,7 @@
 			init();
 			animate();
 
+			var LOADING_MANAGER = null
 
 			function init() {
 
@@ -59,7 +60,13 @@
 				camera.position.set( 0, 480, 1050 );
 				scene = new THREE.Scene();
 
+				var loadingManager = new THREE.LoadingManager()
+				loadingManager.onLoad = function(item, loaded, total) {
+					console.log(item,loaded,total)
 
+				    overlay.style.display = 'none';
+
+				}
 
 				var sun = new THREE.DirectionalLight( 0xFFFFFF, 0.6 );
 				sun.position.set( 300, 400, 175 );
@@ -121,7 +128,7 @@
 				sunPivot.add( cube );
 				objects.push( cube );
 
-				var loader2 = new THREE.JSONLoader();
+				var loader2 = new THREE.JSONLoader(loadingManager);
 				loader2.load('models/newcowmilk.json', handle_load2);
 
 				function handle_load2(geometry, materials2) {
@@ -138,7 +145,7 @@
 					mesh2.position.x = 10;
 					mesh2.scale.set(30,30,30)
 				}
-				var loader = new THREE.JSONLoader();
+				var loader = new THREE.JSONLoader(loadingManager);
 				loader.load('models/milkRaid.json', handle_load);
 
 				function handle_load(geometry, materials) {
@@ -155,13 +162,7 @@
 
 					mesh.scale.set(1.15,1.15,1.15)
 				}
-				var manager = new THREE.LoadingManager();
-				manager.onProgress = function ( item, loaded, total ) {
 
-				    console.log( item, loaded, total );
-
-
-				};
 
 					var starsGeometry = new THREE.Geometry();
 
