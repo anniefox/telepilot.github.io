@@ -594,9 +594,7 @@ smoothWater();
 				}
 				else {
 					uniforms.mousePos.value.set( 10000, 10000 );
-					if ( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini| SAMSUNG|Samsung|SGH-[I|N|T]|GT-[I|N]|SM-[N|P|T|Z]|SHV-E|SCH-[I|J|R|S]|SPH-L/i.test(navigator.userAgent) ) {
-						controls.enabled = true
-					}
+					
 				}
 
 				// Do the gpu computation
