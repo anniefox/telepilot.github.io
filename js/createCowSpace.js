@@ -155,6 +155,13 @@
 
 					mesh.scale.set(1.15,1.15,1.15)
 				}
+				var manager = new THREE.LoadingManager();
+				manager.onProgress = function ( item, loaded, total ) {
+
+				    console.log( item, loaded, total );
+
+
+				};
 
 					var starsGeometry = new THREE.Geometry();
 

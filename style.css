@@ -41,7 +41,9 @@ canvas {
 
 }
 
-
+#menu {
+  top: 1px;
+}
 #overlay {
   height: 100%;
   width: 100%;
@@ -124,7 +126,12 @@ input {
   height: 40px;
 }
 
-
+#maingrid{
+  display:  flex;
+}
+#subgrid{
+  display: none;
+}
 
 @media screen and (max-width: 991px) {
      /* start of large tablet styles */
@@ -168,8 +175,8 @@ input {
 
 
      .grid-item img {
-       width: 40px;
-       height: 40px;
+       width: 30px;
+       height: 30px;
      }
 
 
@@ -198,6 +205,12 @@ input {
        height: auto;
        position: relative;
        z-index: 5;
+     }
+     #maingrid{
+       display: none;
+     }
+     #subgrid{
+       display:  flex;
      }
 
      #menuToggle {
@@ -386,6 +399,12 @@ input {
        height: auto;
        position: relative;
        z-index: 5;
+     }
+     #maingrid{
+       display: none;
+     }
+     #subgrid{
+       display: flex;
      }
     #menuToggle {
       display: block;
