@@ -176,14 +176,14 @@ var starsMaterial = new THREE.PointsMaterial( { color: 0xFFFFFFF } );
 var starField = new THREE.Points( starsGeometry, starsMaterial );
 
 scene.add( starField );
-var clicked = false;
+var clicked = true;
 var dragControls = new THREE.DragControls( objects, camera, renderer.domElement );
-	clicked = true
+
 	dragControls.addEventListener( 'dragstart', function ( event ) { controls.enabled = false;
 		clicked = false;
 	 } )
 	dragControls.addEventListener( 'dragend', function ( event ) { controls.enabled = true;
-
+		clicked = true
 
 	 } )
 
@@ -230,7 +230,7 @@ function onMouseMove( event ) {
 				var animate1 = function() {
 				  requestAnimationFrame(animate1);
 
-					 if(controls.enabled) {
+					 if(clicked) {
 						sunPivot.orb = {y: 0.01}
 						sunPivot.rotation.y += sunPivot.orb.y;
 
@@ -574,14 +574,15 @@ smoothWater();
 					    var point = intersects[ 0 ].point;
 					    uniforms.mousePos.value.set( point.x, point.z );
 							controls.enabled = false
+
 					} else if ( intersects.length > 0 ) {
 						var point = intersects[ 0 ].point;
 						uniforms.mousePos.value.set( point.x, point.z );
-						controls.enabled = true
+							controls.enabled = false
 					}
 					else {
 					    uniforms.mousePos.value.set( 10000, 10000 );
-
+							controls.enabled = true
 					}
 					mouseMoved = false;
 				}
