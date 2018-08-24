@@ -71,7 +71,24 @@ input {
 }
 
 /* start of desktop styles */
+#zoom {
+  width: 100%;
+  position:absolute;
+  display: none;
+  justify-content: center;
+  bottom: 20px;
+  text-align: center;
+  z-index: 200;
+}
+#zoom h2 {
+  animation: blinker 3s linear infinite;
+}
 
+@keyframes blinker {
+  50% {
+    opacity: 0.2;
+  }
+}
 .wrapper {
   display: grid;
   grid-template-columns: 1fr 4fr;

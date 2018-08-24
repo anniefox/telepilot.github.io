@@ -29,7 +29,7 @@
 			const overlay = document.getElementById("overlay");
 			var windowHalfX = window.innerWidth / 2;
 			var windowHalfY = window.innerHeight / 2;
-
+			const zoom = document.getElementById('zoom')
 
 			function change(n) {
 				location.hash = n;
@@ -198,6 +198,7 @@ function onDocumentKeyDown1(event) {
 if (event.keyCode === 69 ) {
 
 if (disabled) {
+	zoom.style.display = 'flex'
  controls.minDistance = 48;
  controls.maxDistance = 7500;
 camera.position.set( 0, 480, 1050 );
@@ -206,6 +207,7 @@ controls.enableRotate = false;
 disabled = false
 console.log(disabled)
 }  else {
+	zoom.style.display = 'none'
 	controls.minDistance = 400;
   controls.maxDistance = 1500;
 controls.enablePan = true;
@@ -577,7 +579,7 @@ smoothWater();
 
 
 					} else if ( intersects.length > 0 ) {
-						controls.enabled = false
+						
 						var point = intersects[ 0 ].point;
 						uniforms.mousePos.value.set( point.x, point.z );
 
