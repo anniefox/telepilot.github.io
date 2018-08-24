@@ -577,20 +577,21 @@ smoothWater();
 
 
 					} else if ( intersects.length > 0 ) {
+						controls.enabled = false
 						var point = intersects[ 0 ].point;
 						uniforms.mousePos.value.set( point.x, point.z );
-							controls.enabled = false
+
 					}
 					else {
 					    uniforms.mousePos.value.set( 10000, 10000 );
-							controls.enabled = true
+								controls.enabled = true
 					}
 					mouseMoved = false;
-					controls.enabled = true
+
 				}
 				else {
 					uniforms.mousePos.value.set( 10000, 10000 );
-					controls.enabled = true
+
 				}
 
 				// Do the gpu computation
