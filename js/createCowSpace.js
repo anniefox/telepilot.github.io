@@ -1,4 +1,3 @@
-
 			if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
 
 			var hash = document.location.hash.substr( 1 );
@@ -56,7 +55,7 @@
 				container = document.createElement( 'div' );
 				document.body.appendChild( container );
 
-				camera = new THREE.PerspectiveCamera( 85, window.innerWidth / window.innerHeight, 1, 3500 );
+				camera = new THREE.PerspectiveCamera( 85, window.innerWidth / window.innerHeight, 1, 4500 );
 				camera.position.set( 0, 480, 1050 );
 				scene = new THREE.Scene();
 
@@ -82,7 +81,7 @@
 				controls = new THREE.OrbitControls( camera, renderer.domElement );
 				controls.enableDampning = true;
 				controls.minDistance = 400;
-				controls.maxDistance = 4500
+				controls.maxDistance = 1500
 
 				var radius = 60;
 				var segments = 50;
@@ -204,7 +203,7 @@ if (event.keyCode === 69 ) {
 
 if (disabled) {
  controls.minDistance = 48;
- controls.maxDistance = 4800;
+ controls.maxDistance = 7500;
 camera.position.set( 0, 480, 1050 );
 controls.enablePan = false;
 controls.enableRotate = false;
@@ -256,15 +255,16 @@ function onMouseMove( event ) {
 	// }
 
 
-
 					cube.position.z += cube.orbPos.z
 					cube.position.y += cube.orbPos.y
 					if (!disabled && camera.position.z <= controls.minDistance) {
-								camera.position.z = controls.maxDistance - 150
-								camera.position.y = 1780}
-					  if (!disabled && camera.position.z >= (controls.maxDistance)) {
-						camera.position.z = controls.minDistance
-						camera.position.y = 280
+								camera.position.z = controls.maxDistance - 950
+								camera.position.y = 2780
+						}
+					   if (!disabled && camera.position.z >= (controls.maxDistance - 700)) {
+						camera.position.z = controls.minDistance + 50
+						camera.position.y = 45
+
 					}
 
 					if ((cube.position.z <= 0)) {

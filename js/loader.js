@@ -1,8 +1,10 @@
 var overlay = document.getElementById("overlay");
 
-document.addEventListener("DOMContentLoaded", function(event) {
+window.addEventListener("load", removeOverlay, false)
+
+ function removeOverlay() {
   setTimeout(() => {
     overlay.style.display = 'none';
   }, 1500);
 
-});
+}

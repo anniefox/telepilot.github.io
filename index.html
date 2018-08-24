@@ -4,7 +4,8 @@
 		<title>Milk Raid</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-	<link rel="stylesheet" href="style.css">
+		<link rel="shortcut icon" href="img/favicon.png">
+		<link rel="stylesheet" href="style.css">
 
 
 	</head>
@@ -12,6 +13,9 @@
 
 		<!-- NO COWS WERE HURT IN THE MAKING OF THIS WEBSITE -->
 		<!-- *****  NOT TO SCALE  ***** -->
+		<!-- © copyright Teodor Blixt - teoblixt.com  -->
+		<!-- © copyright Alex morgan - planet.theajm.com -->
+		<!-- © Coopyright threejs Mr Doob - visit http://threejs.org-->
 		<div id="overlay">
 			<div id='loader'>
 				<h2>Loading</h2>
@@ -24,9 +28,10 @@
 		</div>
 		<div class="wrapper">
     <div class="nav">
-        <a href="index2.html#releases"><img id="logo" src="img/logo-03.png" alt=""></a>
+        <a id="logolink1" href="index2.html#releases"><img id="logo" src="img/logo-03.png" alt=""></a>
+				<a id="logolink2" href="index2.html#releases"><img id="logo2" src="img/logo-01.png" alt=""></a>
 				<div id="menuToggle">
-          <input type="checkbox" />
+          <input type="checkbox" onclick="logoswitch()"/>
           <span></span>
           <span></span>
           <span></span>
@@ -67,7 +72,10 @@
     <div class="page-display"></div>
 
 	<script src="js/loader.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/92/three.min.js"></script>
+		<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/92/three.min.js"></script> -->
+		<script src="build/three.js">
+
+		</script>
 		<script src="js/controls/DragControls.js"></script>
 		<script src="js/Detector.js"></script>
 		<script src="js/libs/stats.min.js"></script>
@@ -186,5 +194,8 @@
 		</script>
 
 		<script src="js/createCowSpace.js"></script>
+		<script src="js/logoswitch.js">
+
+		</script>
 	</body>
 </html>
