@@ -223,7 +223,7 @@ mc.on("panleft panright tap press", function(ev) {
     onPhoneTap(ev)
 });
 function onPhoneTap(event) {
-if (event.type === "tap" ) {
+if (event.type === "press" ) {
 
 if (disabled) {
   zoomPhone.style.display = 'flex'
@@ -242,7 +242,7 @@ controls.enablePan = true;
 controls.enableRotate = true;
 disabled = true
 console.log(disabled)
-}} else if (event.type === "press") {
+}} else if (event.type === "tap") {
 	cube.orbPos.z -= 1;
 }}
 
