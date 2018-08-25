@@ -323,7 +323,7 @@ function onMouseMove( event ) {
 						sunPivot.rotation.y = 0;
 						cube.orbPos.y -= i
 						setInterval(function(){ i += 0.0098 }, 300);
-						if (cube.scale.y < 20) {
+						if (cube.scale.y < 27) {
 								cube.scale.set(1 + (i /50),1 + i /50,1 + i/50)
 						}
 						if (cube.position.y <= 0) {

@@ -10,12 +10,14 @@ body {
 
   margin: 0px;
   overflow: hidden;
-  background-size:     cover;
+  background-size: cover;
     background-repeat:   no-repeat;
     background-position: center center;
     background-color: black;
     color: white;
-    font-family: "Sequel-100"
+    font-family: "Sequel-100";
+    -ms-touch-action: none;
+        touch-action: none;
 }
 
 #no-support {
@@ -50,7 +52,7 @@ canvas {
   position: absolute;
   top: 0;
   left: 0;
-  
+
 
 }
 
