@@ -51,7 +51,14 @@ if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
 			document.getElementById('options').innerHTML = options;
 
 			init();
-			animate();
+			if (Detector.webgl) {
+					// Initiate function or other initializations here
+					animate();
+			} else {
+				 noSupport.style.display = "flex"
+			}
+
+
 
 			var LOADING_MANAGER = null
 
