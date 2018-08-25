@@ -18,7 +18,19 @@ body {
     font-family: "Sequel-100"
 }
 
-
+#no-support {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  z-index: -1;
+  background-image: url("img/no-support.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+}
 
 #logolink2 {
   display: none
@@ -26,7 +38,7 @@ body {
 #info {
   visibility: hidden;
   position: absolute;
-
+  display: none;
 }
 .dg {
   visibility: hidden;
@@ -34,12 +46,14 @@ body {
 }
 
 canvas {
-  background: transparent;
+  background: black;
   position: absolute;
   top: 0;
   left: 0;
+  
 
 }
+
 
 #menu {
   top: 1px;
@@ -209,7 +223,7 @@ input {
        bottom: 0;
        left: 0;
        display: flex;
-       z-index: 500;
+       z-index: 80;
        justify-content: center;
      }
      #phone-bar {
@@ -418,7 +432,7 @@ input {
     bottom: 0;
     left: 0;
     display: flex;
-    z-index: 500;
+    z-index: 80;
     justify-content: center;
   }
   #phone-bar {
