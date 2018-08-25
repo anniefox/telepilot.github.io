@@ -26,10 +26,13 @@ if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
 			var smoothShader;
 			var camPosZ = 0
 			var simplex = new SimplexNoise();
-			const overlay = document.getElementById("overlay");
+
 			var windowHalfX = window.innerWidth / 2;
 			var windowHalfY = window.innerHeight / 2;
-
+			//DOM ELEMEENTS
+			const overlay = document.getElementById("overlay");
+			const zoom = document.getElementById("zoom");
+			const phone = document.getElementById("phone-bar")
 			document.getElementById( 'waterSize' ).innerText = WIDTH + ' x ' + WIDTH;
 
 			function change(n) {
@@ -183,15 +186,15 @@ var starField = new THREE.Points( starsGeometry, starsMaterial );
 
 scene.add( starField );
 var clicked = false;
-var dragControls = new THREE.DragControls( objects, camera, renderer.domElement );
-	clicked = true
-	dragControls.addEventListener( 'dragstart', function ( event ) { controls.enabled = true;
-		clicked = false;
-	 } )
-	dragControls.addEventListener( 'dragend', function ( event ) { controls.enabled = true;
-
-
-	 } )
+// var dragControls = new THREE.DragControls( objects, camera, renderer.domElement );
+// 	clicked = true
+// 	dragControls.addEventListener( 'dragstart', function ( event ) { controls.enabled = true;
+// 		clicked = false;
+// 	 } )
+// 	dragControls.addEventListener( 'dragend', function ( event ) { controls.enabled = true;
+//
+//
+// 	 } )
 
 
 
@@ -204,6 +207,36 @@ var i = 0;
 //
 //
 // }
+//KEY AND TOUCH EVENTS
+var mc = new Hammer(phone);
+
+// listen to events...
+mc.on("panleft panright tap press", function(ev) {
+    onPhoneTap(ev)
+});
+function onPhoneTap(event) {
+if (event.type === "tap" ) {
+
+if (disabled) {
+  zoomPhone.style.display = 'flex'
+ controls.minDistance = 48;
+ controls.maxDistance = 7500;
+camera.position.set( 0, 480, 1050 );
+controls.enablePan = false;
+controls.enableRotate = false;
+disabled = false
+console.log(disabled)
+}  else {
+  zoomPhone.style.display = 'none'
+	controls.minDistance = 400;
+  controls.maxDistance = 1500;
+controls.enablePan = true;
+controls.enableRotate = true;
+disabled = true
+console.log(disabled)
+}} else if (event.type === "press") {
+	cube.orbPos.z -= 1;
+}}
 
 document.addEventListener("keydown", onDocumentKeyDown1, false);
 function onDocumentKeyDown1(event) {
@@ -227,6 +260,14 @@ controls.enableRotate = true;
 disabled = true
 console.log(disabled)
 }}}
+
+document.addEventListener("keydown", onDocumentKeyDown, false);
+function onDocumentKeyDown(event) {
+if (event.keyCode === 71 ) {
+cube.orbPos.z -= 1;
+
+}}
+
 sunPivot.rotation.y = 0;
 	var accumilated
 	var raycaster = new THREE.Raycaster();
@@ -244,7 +285,7 @@ function onMouseMove( event ) {
 				var animate1 = function() {
 				  requestAnimationFrame(animate1);
 
-					 if(clicked) {
+					 if(!clicked) {
 						sunPivot.orb = {y: 0.01}
 						sunPivot.rotation.y += sunPivot.orb.y;
 
@@ -308,12 +349,7 @@ controls.update()
 
 				animate1();
 
-				document.addEventListener("keydown", onDocumentKeyDown, false);
-				function onDocumentKeyDown(event) {
-				if (event.keyCode === 71 ) {
-				cube.orbPos.z -= 1;
 
-			}}
 
 
 		// if (cube.position.y <= 400 ) {

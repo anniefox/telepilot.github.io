@@ -71,7 +71,7 @@ input {
 }
 
 /* start of desktop styles */
-#zoom {
+.zoom-container {
   width: 100%;
   position:absolute;
   display: none;
@@ -80,24 +80,11 @@ input {
   text-align: center;
   z-index: 200;
 }
-#zoom h2 {
+.zoom-container h2 {
   animation: blinker 3s linear infinite;
 }
 .phone-bar-container {
-  position:absolute;
-  width: 100%;
-  height: 4%;
-  bottom: 0;
-  left: 0;
-  display: flex;
-  z-index: 500;
-  justify-content: center;
-}
-#phone-bar {
-  width: 100%;
-  height: 100%;
-  background: white;
-  transform: rotate(0deg)
+  display: none
 }
 
 @keyframes blinker {
@@ -215,6 +202,22 @@ input {
 
 @media screen and (max-width: 767px) {
      /* start of medium phone styles */
+     .phone-bar-container {
+       position:absolute;
+       width: 100%;
+       height: 4%;
+       bottom: 0;
+       left: 0;
+       display: flex;
+       z-index: 500;
+       justify-content: center;
+     }
+     #phone-bar {
+       width: 100%;
+       height: 100%;
+       background: white;
+       transform: rotate(0deg)
+     }
      .wrapper {
        display: grid;
        grid-template-columns: 1fr 4fr;
@@ -408,6 +411,22 @@ input {
 
 
 @media screen and (max-width: 479px) {
+  .phone-bar-container {
+    position:absolute;
+    width: 100%;
+    height: 4%;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    z-index: 500;
+    justify-content: center;
+  }
+  #phone-bar {
+    width: 100%;
+    height: 100%;
+    background: white;
+    transform: rotate(0deg)
+  }
      /* start of phone styles */
      .wrapper {
        display: grid;
