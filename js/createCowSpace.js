@@ -1,4 +1,4 @@
-			if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
+if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
 
 			var hash = document.location.hash.substr( 1 );
 			if ( hash ) hash = parseInt( hash, 0 );
@@ -29,7 +29,8 @@
 			const overlay = document.getElementById("overlay");
 			var windowHalfX = window.innerWidth / 2;
 			var windowHalfY = window.innerHeight / 2;
-			const zoom = document.getElementById('zoom')
+
+			document.getElementById( 'waterSize' ).innerText = WIDTH + ' x ' + WIDTH;
 
 			function change(n) {
 				location.hash = n;
@@ -38,7 +39,12 @@
 			}
 
 
-
+			var options = '';
+			for ( var i = 4; i < 10; i++ ) {
+				var j = Math.pow( 2, i );
+				options += '<a href="#" onclick="return change(' + j + ')">' + j + 'x' + j + '</a> ';
+			}
+			document.getElementById('options').innerHTML = options;
 
 			init();
 			animate();
@@ -49,14 +55,14 @@
 
 				container = document.createElement( 'div' );
 				document.body.appendChild( container );
-				//Camera
+
 				camera = new THREE.PerspectiveCamera( 85, window.innerWidth / window.innerHeight, 1, 4500 );
 				camera.position.set( 0, 480, 1050 );
-				//Scene
 				scene = new THREE.Scene();
-				//Remove overlay when ALL items fully loaded
+
 				var loadingManager = new THREE.LoadingManager()
 				loadingManager.onLoad = function(item, loaded, total) {
+					console.log(item,loaded,total)
 
 				    overlay.style.display = 'none';
 
@@ -125,7 +131,7 @@
 				var loader2 = new THREE.JSONLoader(loadingManager);
 				loader2.load('models/newcowmilk.json', handle_load2);
 
-				function handle_load2(geometry, materials2) {
+				function handle_load2(geometry, materials2) {
 					var materials2 = new THREE.MeshBasicMaterial({
 					  color: 0x000000,
 
@@ -142,7 +148,7 @@
 				var loader = new THREE.JSONLoader(loadingManager);
 				loader.load('models/milkRaid.json', handle_load);
 
-				function handle_load(geometry, materials) {
+				function handle_load(geometry, materials) {
 					var materials = new THREE.MeshPhongMaterial({
 					  color: 0xa878b9,
 						shininess: 200,
@@ -176,15 +182,14 @@ var starsMaterial = new THREE.PointsMaterial( { color: 0xFFFFFFF } );
 var starField = new THREE.Points( starsGeometry, starsMaterial );
 
 scene.add( starField );
-var clicked = true;
+var clicked = false;
 var dragControls = new THREE.DragControls( objects, camera, renderer.domElement );
-
-	dragControls.addEventListener( 'dragstart', function ( event ) { controls.enabled = false;
+	clicked = true
+	dragControls.addEventListener( 'dragstart', function ( event ) { controls.enabled = true;
 		clicked = false;
-
 	 } )
 	dragControls.addEventListener( 'dragend', function ( event ) { controls.enabled = true;
-		clicked = true
+
 
 	 } )
 
@@ -192,14 +197,20 @@ var dragControls = new THREE.DragControls( objects, camera, renderer.domElement 
 
 
 var i = 0;
-
+//
+// if (controls.enabled === false) {
+//
+// 	sunPivot.applyMatrix()
+//
+//
+// }
 
 document.addEventListener("keydown", onDocumentKeyDown1, false);
 function onDocumentKeyDown1(event) {
 if (event.keyCode === 69 ) {
 
 if (disabled) {
-	zoom.style.display = 'flex'
+  zoom.style.display = 'flex'
  controls.minDistance = 48;
  controls.maxDistance = 7500;
 camera.position.set( 0, 480, 1050 );
@@ -208,7 +219,7 @@ controls.enableRotate = false;
 disabled = false
 console.log(disabled)
 }  else {
-	zoom.style.display = 'none'
+  zoom.style.display = 'none'
 	controls.minDistance = 400;
   controls.maxDistance = 1500;
 controls.enablePan = true;
@@ -242,11 +253,7 @@ function onMouseMove( event ) {
 
 					} else
 					{
-						sunPivot.rotation.y = accumilated
-
-
 					}
-
 					starField.rotation.y += 0.001
 					// crazy shite
 	// 				raycaster.setFromCamera(mouse, camera)
@@ -294,7 +301,7 @@ function onMouseMove( event ) {
 					cube.rotation.x += 0.009;
 				 	cube.rotation.y += 0.001;
 				 	cube.rotation.z += 0.001;
-
+controls.update()
 
 				  // renderer.render(scene, camera);
 				}
@@ -574,27 +581,23 @@ smoothWater();
 					var intersects = this.raycaster.intersectObject( meshRay );
 
 					if ( intersects.length > 0 && /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini| SAMSUNG|Samsung|SGH-[I|N|T]|GT-[I|N]|SM-[N|P|T|Z]|SHV-E|SCH-[I|J|R|S]|SPH-L/i.test(navigator.userAgent) ) {
-						controls.enabled = false
 					    var point = intersects[ 0 ].point;
 					    uniforms.mousePos.value.set( point.x, point.z );
 
-
 					} else if ( intersects.length > 0 ) {
-
 						var point = intersects[ 0 ].point;
 						uniforms.mousePos.value.set( point.x, point.z );
 
 					}
 					else {
 					    uniforms.mousePos.value.set( 10000, 10000 );
-								controls.enabled = true
+
 					}
 					mouseMoved = false;
-
 				}
 				else {
 					uniforms.mousePos.value.set( 10000, 10000 );
-					
+
 				}
 
 				// Do the gpu computation
