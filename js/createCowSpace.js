@@ -33,6 +33,7 @@ if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
 			const overlay = document.getElementById("overlay");
 			const zoom = document.getElementById("zoom");
 			const phone = document.getElementById("phone-bar")
+			const noSupport = document.getElementById('no-support')
 			document.getElementById( 'waterSize' ).innerText = WIDTH + ' x ' + WIDTH;
 
 			function change(n) {
@@ -282,6 +283,7 @@ function onMouseMove( event ) {
 	mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
 
 }
+
 				var animate1 = function() {
 				  requestAnimationFrame(animate1);
 
@@ -347,8 +349,13 @@ controls.update()
 				  // renderer.render(scene, camera);
 				}
 
-				animate1();
 
+				if (Detector.webgl) {
+				    // Initiate function or other initializations here
+				    animate1();
+				} else {
+				   noSupport.style.display = "flex"
+				}
 
 
 
