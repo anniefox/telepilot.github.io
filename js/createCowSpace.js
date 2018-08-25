@@ -84,7 +84,7 @@ if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
 				scene.add( sun3 );
 
 
-				renderer = new THREE.WebGLRenderer( {alpha: true});
+				renderer = new THREE.WebGLRenderer( );
 				renderer.setPixelRatio( window.devicePixelRatio );
 				renderer.setSize( window.innerWidth, window.innerHeight );
 				container.appendChild( renderer.domElement );
