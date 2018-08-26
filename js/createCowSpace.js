@@ -14,8 +14,8 @@ if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
 			var container, stats;
 			var camera, scene, renderer, controls;
 			var mouseMoved = false;
+				var raycaster = new THREE.Raycaster();
 			var mouseCoords = new THREE.Vector2();
-			var raycaster = new THREE.Raycaster();
 			var objects = [];
 			var geometry;
 			var waterMesh;
@@ -26,9 +26,14 @@ if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
 			var smoothShader;
 			var camPosZ = 0
 			var simplex = new SimplexNoise();
-
+			var raycaster2 = new THREE.Raycaster();
+			var mouse = new THREE.Vector2();
 			var windowHalfX = window.innerWidth / 2;
 			var windowHalfY = window.innerHeight / 2;
+					var sunPivot = new THREE.Object3D();
+			var cube;
+			var cubeOrb = 0;
+
 			//DOM ELEMEENTS
 			const overlay = document.getElementById("overlay");
 			const zoom = document.getElementById("zoom");
@@ -123,11 +128,11 @@ if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
 
 				scene.add( centreOfGravity );
 				centreOfGravity.position.y = -10;
-				var sunPivot = new THREE.Object3D();
+
 				centreOfGravity.add( sunPivot );
 
 
-				var cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
+				cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
 				cube.position.z = 500;
 				cube.position.y = 550;
 				var zp = 500;
@@ -242,9 +247,7 @@ controls.enablePan = true;
 controls.enableRotate = true;
 disabled = true
 console.log(disabled)
-}} else if (event.type === "tap") {
-	cube.orbPos.z -= 1;
-}}
+}}}
 
 document.addEventListener("keydown", onDocumentKeyDown1, false);
 function onDocumentKeyDown1(event) {
@@ -278,18 +281,9 @@ cube.orbPos.z -= 1;
 
 sunPivot.rotation.y = 0;
 	var accumilated
-	var raycaster = new THREE.Raycaster();
-var mouse = new THREE.Vector2();
+
 var disabled = true
-function onMouseMove( event ) {
 
-	// calculate mouse position in normalized device coordinates
-	// (-1 to +1) for both components
-
-	mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
-	mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
-
-}
 
 				var animate1 = function() {
 				  requestAnimationFrame(animate1);
@@ -306,16 +300,11 @@ function onMouseMove( event ) {
 					}
 					starField.rotation.y += 0.001
 					// crazy shite
-	// 				raycaster.setFromCamera(mouse, camera)
-	// 				var intersects = raycaster.intersectObjects( sunPivot.children )
-	// 				for ( var i = 0; i < intersects.length; i++ ) {
-	//
-	// 	intersects[ i ].recursive.material.color.set( 0xff0000 * Math.random());
-	//
-	// }
+
 
 
 					cube.position.z += cube.orbPos.z
+					cube.position.z += cubeOrb
 					cube.position.y += cube.orbPos.y
 					if (!disabled && camera.position.z <= controls.minDistance) {
 								camera.position.z = controls.maxDistance - 950
@@ -371,7 +360,7 @@ controls.update()
 		//
 		// }
 
-
+				container.addEventListener( 'click', onDocumentMouseMove, false );
 				container.addEventListener( 'mousemove', onDocumentMouseMove, false );
 				container.addEventListener( 'touchstart', onDocumentTouchStart, false );
 				container.addEventListener( 'touchmove', onDocumentTouchMove, false );
@@ -621,6 +610,12 @@ smoothWater();
 			function render() {
 
 				//Cube
+				raycaster2.setFromCamera(mouse, camera)
+				var intersects2 = raycaster.intersectObjects( sunPivot.children )
+				for ( var i = 0; i < intersects2.length; i++ ) {
+
+					cubeOrb = -1
+}
 
 				// Set uniforms: mouse interaction
 				var uniforms = heightmapVariable.material.uniforms;
