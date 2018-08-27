@@ -165,8 +165,9 @@ if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
 				}
 				var loader = new THREE.JSONLoader(loadingManager);
 				loader.load('models/milkRaid.json', handle_load,	function ( xhr ) {
-		loadingBar.style.width = (xhr.loaded / xhr.total * 100) + '%';
-		loadingPercentage.innerHTML = Math.floor((xhr.loaded / xhr.total * 100)) + '%'
+				loadingBar.style.width = (xhr.loaded / xhr.total * 100) + '%';
+				loadingPercentage.innerHTML = Math.floor((xhr.loaded / xhr.total * 100)) + '%'
+				console.log((xhr.loaded / xhr.total *100) + '%')
 	});
 
 				function handle_load(geometry, materials) {
