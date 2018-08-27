@@ -147,7 +147,7 @@ if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
 
 				sunPivot.add( cube );
 				objects.push( cube );
-				const loadingFunction = (xhr) => {
+				var loadingFunction = function(xhr) {
 					if ( xhr.lengthComputable ) {
         	var percentComplete = xhr.loaded / xhr.total * 100;
         console.log( Math.round(percentComplete) + '%' );
