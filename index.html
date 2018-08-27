@@ -6,8 +6,6 @@
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<link rel="shortcut icon" href="img/favicon.png">
 		<link rel="stylesheet" href="style.css">
-
-
 	</head>
 	<body>
 
@@ -19,6 +17,9 @@
 		<div id="overlay">
 			<div id='loader'>
 				<h2>Loading</h2>
+				<div class="loading-bar-container">
+					<div id="loading-bar"><p id="bar-percentage"></p></div>
+				</div>
 				<a href="index2.html#releases">Internet too slow? Click Here</a>
 			</div>
 		</div>
@@ -31,7 +32,7 @@
 		 <span id="waterSize"></span> <span id="options"></span>
 		</div>
 		<div class="wrapper">
-    <div class="nav">
+  	  <div class="nav">
         <a id="logolink1" href="index2.html#releases"><img id="logo" src="img/logo-03.png" alt=""></a>
 				<a id="logolink2" href="index2.html#releases"><img id="logo2" src="img/logo-01.png" alt=""></a>
 				<div id="menuToggle">
@@ -90,39 +91,36 @@
 
         </div>
       </div>
-    <div class="page-display"></div>
-	</div>
-	<div class="phone-bar-container">
-		<div id="phone-bar"></div>
-	</div>
-	<div id="zoom" class="zoom-container">
-		<div>
-			<h2>Zoom</h2>
-			<h5>Press ' E ' to leave</h5>
+    	<div class="page-display"></div>
 		</div>
-	</div>
-	<div id="zoomPhone" class="zoom-container">
-		<div>
-			<h2>Zoom</h2>
-			<h5>Press White Bar to leave</h5>
+		<div class="phone-bar-container">
+			<div id="phone-bar"></div>
 		</div>
-	</div>
+		<div id="zoom" class="zoom-container">
+			<div>
+				<h2>Zoom</h2>
+				<h5>Press ' E ' to leave</h5>
+			</div>
+		</div>
+		<div id="zoomPhone" class="zoom-container">
+			<div>
+				<h2>Zoom</h2>
+				<h5>Press White Bar to leave</h5>
+			</div>
+		</div>
 
 
 		<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/92/three.min.js"></script> -->
-		<script src="build/three.js">
-
-		</script>
+		<script src="build/three.js"></script>
 		<script src="js/controls/DragControls.js"></script>
 		<script src="js/Detector.js"></script>
 		<script src="js/libs/stats.min.js"></script>
 		<script src="js/libs/dat.gui.min.js"></script>
-		<script src="js/controls/OrbitControls.js">
-		 </script>
+		<script src="js/controls/OrbitControls.js"></script>
 		<script src="js/SimplexNoise.js"></script>
 		<script src="js/GPUComputationRenderer.js"></script>
 		<script src="src/loaders/JSONLoader.js"></script>
-				<script src="js/controls/DragControls.js"></script>
+		<script src="js/controls/DragControls.js"></script>
 		<!-- This is the 'compute shader' for the water heightmap: -->
 		<script id="heightmapFragmentShader" type="x-shader/x-fragment">
 			#include <common>

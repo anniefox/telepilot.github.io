@@ -85,7 +85,19 @@ canvas {
 input {
   display: none;
 }
-
+.loading-bar-container {
+  height: 25px;
+  width: 100%;
+  margin-bottom: 20px;
+}
+#loading-bar {
+  background: white;
+  height: 100%;
+  width: 0%;
+}
+#bar-percentage {
+  color: black;
+}
 /* start of desktop styles */
 .zoom-container {
   width: 100%;

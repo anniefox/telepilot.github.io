@@ -39,6 +39,8 @@ if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
 			const zoom = document.getElementById("zoom");
 			const phone = document.getElementById("phone-bar")
 			const noSupport = document.getElementById('no-support')
+			let loadingBar = document.getElementById('loading-bar')
+			let loadingPercentage = document.getElementById('bar-percentage')
 			document.getElementById( 'waterSize' ).innerText = WIDTH + ' x ' + WIDTH;
 
 			function change(n) {
@@ -78,7 +80,7 @@ if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
 
 				var loadingManager = new THREE.LoadingManager()
 				loadingManager.onLoad = function(item, loaded, total) {
-					console.log(item,loaded,total)
+
 
 				    overlay.style.display = 'none';
 
@@ -145,7 +147,7 @@ if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
 				objects.push( cube );
 
 				var loader2 = new THREE.JSONLoader(loadingManager);
-				loader2.load('models/newcowmilk.json', handle_load2);
+				loader2.load('models/newcowmilk.json', handle_load2,);
 
 				function handle_load2(geometry, materials2) {
 					var materials2 = new THREE.MeshBasicMaterial({
@@ -162,7 +164,10 @@ if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
 					mesh2.scale.set(30,30,30)
 				}
 				var loader = new THREE.JSONLoader(loadingManager);
-				loader.load('models/milkRaid.json', handle_load);
+				loader.load('models/milkRaid.json', handle_load,	function ( xhr ) {
+		loadingBar.style.width = (xhr.loaded / xhr.total * 100) + '%';
+		loadingPercentage.innerHTML = Math.floor((xhr.loaded / xhr.total * 100)) + '%'
+	});
 
 				function handle_load(geometry, materials) {
 					var materials = new THREE.MeshPhongMaterial({
@@ -354,11 +359,6 @@ controls.update()
 				}
 
 
-
-		// if (cube.position.y <= 400 ) {
-		// cube.orbPos.z += -1;
-		//
-		// }
 
 				container.addEventListener( 'click', onDocumentMouseDown, false );
 				container.addEventListener( 'mousemove', onDocumentMouseMove, false );
