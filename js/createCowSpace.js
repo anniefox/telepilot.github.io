@@ -80,8 +80,10 @@ if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
 
 				var loadingManager = new THREE.LoadingManager()
 				loadingManager.onLoad = function(item, loaded, total) {
+					setTimeout(function(){
+						overlay.style.display = 'none';
+					},500)
 
-					overlay.style.display = 'none';
 
 
 				}
@@ -148,10 +150,10 @@ if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
 
 				var loader2 = new THREE.JSONLoader(loadingManager);
 				loader2.load('models/newcowmilk.json', handle_load2,	function ( xhr ) {
-					if(xhr.loaded / xhr.total >= 0.01) {
-						loadingBar.style.width = Math.floor((xhr.loaded / xhr.total * 100)) + '%';
-						loadingPercentage.innerHTML = Math.floor((xhr.loaded / xhr.total * 100)) + '%'
-						console.log( Math.floor((xhr.loaded / xhr.total * 100)) + '%' );
+					if(xhr.lengthComputable) {
+						loadingBar.style.width = Math.round((xhr.loaded / xhr.total * 100)) + '%';
+						loadingPercentage.innerHTML = Math.round((xhr.loaded / xhr.total * 100)) + '%'
+						console.log( Math.round((xhr.loaded / xhr.total * 100)) + '%' );
 					}
 
 
@@ -159,7 +161,7 @@ if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
 
 				function handle_load2(geometry, materials2) {
 					var materials2 = new THREE.MeshBasicMaterial({
-					  color: 0x000000,
+					  color: 0x000000
 
 
 					})
@@ -177,7 +179,7 @@ if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
 				function handle_load(geometry, materials) {
 					var materials = new THREE.MeshPhongMaterial({
 					  color: 0xa878b9,
-						shininess: 200,
+						shininess: 200
 
 					})
 					var mesh = new THREE.Mesh(geometry, materials)
