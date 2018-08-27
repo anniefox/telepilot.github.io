@@ -76,6 +76,8 @@ canvas {
 }
 #loader {
   text-align: center;
+  min-width: 30%;
+  width: auto;
 }
 #loader a {
   margin-top: 5%;
@@ -89,11 +91,19 @@ input {
   height: 25px;
   width: 100%;
   margin-bottom: 20px;
+  border: white 1px solid;
+  position: relative;
 }
 #loading-bar {
   background: white;
   height: 100%;
   width: 0%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 #bar-percentage {
   color: black;

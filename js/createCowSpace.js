@@ -81,8 +81,8 @@ if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
 				var loadingManager = new THREE.LoadingManager()
 				loadingManager.onLoad = function(item, loaded, total) {
 
+					overlay.style.display = 'none';
 
-				    overlay.style.display = 'none';
 
 				}
 
@@ -148,9 +148,10 @@ if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
 
 				var loader2 = new THREE.JSONLoader(loadingManager);
 				loader2.load('models/newcowmilk.json', handle_load2,	function ( xhr ) {
-				loadingBar.style.width = (xhr.loaded / xhr.total) * 100 + '%';
+				loadingBar.style.width = Math.floor()(xhr.loaded / xhr.total) * 100) + '%';
 				loadingPercentage.innerHTML = Math.floor((xhr.loaded / xhr.total) * 100) + '%'
-				console.log((xhr.loaded / xhr.total) * 100 + '%')
+				console.log(Math.floor((xhr.loaded / xhr.total) * 100) + '%')
+
 	});
 
 				function handle_load2(geometry, materials2) {
