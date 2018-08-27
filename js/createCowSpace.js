@@ -590,13 +590,7 @@ smoothWater();
 					event.preventDefault();
 
 					setMouseCoords( event.touches[ 0 ].pageX, event.touches[ 0 ].pageY );
-					raycaster2.setFromCamera(mouse, camera)
-					var intersects2 = raycaster.intersectObjects( sunPivot.children )
-					if(intersects2.length > 0) {
 
-						cubeOrb = -1
-						cube.material.color.setHex(0xffffff)
-					}
 
 				}
 
@@ -640,6 +634,13 @@ smoothWater();
 					if ( intersects.length > 0 && /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini| SAMSUNG|Samsung|SGH-[I|N|T]|GT-[I|N]|SM-[N|P|T|Z]|SHV-E|SCH-[I|J|R|S]|SPH-L/i.test(navigator.userAgent) ) {
 					    var point = intersects[ 0 ].point;
 					    uniforms.mousePos.value.set( point.x, point.z );
+							raycaster2.setFromCamera(mouse, camera)
+							var intersects2 = raycaster.intersectObjects( sunPivot.children )
+							if(intersects2.length > 0) {
+
+								cubeOrb = -1
+								cube.material.color.setHex(0xffffff)
+							}
 
 					} else if ( intersects.length > 0 ) {
 						var point = intersects[ 0 ].point;
