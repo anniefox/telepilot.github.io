@@ -147,17 +147,17 @@ if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
 
 				sunPivot.add( cube );
 				objects.push( cube );
+				const loadingFunction = (xhr) => {
+					if ( xhr.lengthComputable ) {
+        	var percentComplete = xhr.loaded / xhr.total * 100;
+        console.log( Math.round(percentComplete) + '%' );
+				loadingBar.style.width = Math.round(percentComplete) + '%'
+				loadingPercentage.innerHTML = Math.round(percentComplete) + '%'
+      }
+				}
 
 				var loader2 = new THREE.JSONLoader(loadingManager);
-				loader2.load('models/newcowmilk.json', handle_load2,	function ( xhr ) {
-					if(xhr.lengthComputable) {
-						loadingBar.style.width = Math.round((xhr.loaded / xhr.total * 100),2) + '%';
-						loadingPercentage.innerHTML = Math.round((xhr.loaded / xhr.total * 100),2) + '%'
-						console.log( Math.round((xhr.loaded / xhr.total * 100),2) + '%' );
-					}
-
-
-	});
+				loader2.load('models/newcowmilk.json', handle_load2, loadingFunction);
 
 				function handle_load2(geometry, materials2) {
 					var materials2 = new THREE.MeshBasicMaterial({
