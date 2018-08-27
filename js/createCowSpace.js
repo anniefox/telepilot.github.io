@@ -148,9 +148,9 @@ if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
 
 				var loader2 = new THREE.JSONLoader(loadingManager);
 				loader2.load('models/newcowmilk.json', handle_load2,	function ( xhr ) {
-				loadingBar.style.width = Math.floor((xhr.loaded / xhr.total) * 100) + '%';
-				loadingPercentage.innerHTML = Math.floor((xhr.loaded / xhr.total) * 100) + '%'
-				console.log(Math.floor((xhr.loaded / xhr.total) * 100) + '%')
+				loadingBar.style.width = Math.floor((xhr.loaded / xhr.total * 100)) + '%';
+				loadingPercentage.innerHTML = Math.floor((xhr.loaded / xhr.total * 100)) + '%'
+				console.log(Math.floor((xhr.loaded / xhr.total * 100)) + '%')
 
 	});
 
