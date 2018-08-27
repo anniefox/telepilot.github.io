@@ -147,7 +147,7 @@ if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
 				objects.push( cube );
 
 				var loader2 = new THREE.JSONLoader(loadingManager);
-				loader2.load('models/newcowmilk.json', handle_load2,);
+				loader2.load('models/newcowmilk.json', handle_load2);
 
 				function handle_load2(geometry, materials2) {
 					var materials2 = new THREE.MeshBasicMaterial({
