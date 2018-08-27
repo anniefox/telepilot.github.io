@@ -362,7 +362,6 @@ controls.update()
 
 				container.addEventListener( 'click', onDocumentMouseDown, false );
 				container.addEventListener( 'mousemove', onDocumentMouseMove, false );
-				container.addEventListener( 'touchstart', onDocumentMouseDown, false );
 				container.addEventListener( 'touchstart', onDocumentTouchStart, false );
 				container.addEventListener( 'touchmove', onDocumentTouchMove, false );
 
@@ -591,7 +590,13 @@ smoothWater();
 					event.preventDefault();
 
 					setMouseCoords( event.touches[ 0 ].pageX, event.touches[ 0 ].pageY );
+					raycaster2.setFromCamera(mouse, camera)
+					var intersects2 = raycaster.intersectObjects( sunPivot.children )
+					if(intersects2.length > 0) {
 
+						cubeOrb = -1
+						cube.material.color.setHex(0xffffff)
+					}
 
 				}
 
