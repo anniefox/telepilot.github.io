@@ -263,7 +263,7 @@ if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
 
 					document.addEventListener("keydown", onDocumentKeyDown1, false);
 					function onDocumentKeyDown1(event) {
-					if (event.keyCode === 69 ) {
+					if (event.keyCode === 32 ) {
 
 					if (disabled) {
 					  zoom.style.display = 'flex'
