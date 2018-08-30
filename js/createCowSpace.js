@@ -14,7 +14,7 @@ if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
 			var container, stats;
 			var camera, scene, renderer, controls;
 			var mouseMoved = false;
-				var raycaster = new THREE.Raycaster();
+			var raycaster = new THREE.Raycaster();
 			var mouseCoords = new THREE.Vector2();
 			var objects = [];
 			var geometry;
@@ -30,7 +30,7 @@ if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
 			var mouse = new THREE.Vector2();
 			var windowHalfX = window.innerWidth / 2;
 			var windowHalfY = window.innerHeight / 2;
-					var sunPivot = new THREE.Object3D();
+			var sunPivot = new THREE.Object3D();
 			var cube;
 			var cubeOrb = 0;
 
@@ -153,7 +153,7 @@ if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
         console.log( Math.round(percentComplete) + '%' );
 				loadingBar.style.width = Math.round(percentComplete) + '%'
 				loadingPercentage.innerHTML = Math.round(percentComplete) + '%'
-      }
+      	}
 				}
 
 				var loader2 = new THREE.JSONLoader(loadingManager);
@@ -194,110 +194,110 @@ if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
 
 					var starsGeometry = new THREE.Geometry();
 
-for ( var i = 0; i < 10000; i ++ ) {
+					for ( var i = 0; i < 10000; i ++ ) {
 
-	var star = new THREE.Vector3();
-	star.x = THREE.Math.randFloatSpread( 2400 );
-	star.y = THREE.Math.randFloatSpread( 2400 );
-	star.z = THREE.Math.randFloatSpread( 2400 );
+						var star = new THREE.Vector3();
+						star.x = THREE.Math.randFloatSpread( 2400 );
+						star.y = THREE.Math.randFloatSpread( 2400 );
+						star.z = THREE.Math.randFloatSpread( 2400 );
 
-	starsGeometry.vertices.push( star );
+						starsGeometry.vertices.push( star );
 
-}
+					}
 
-var starsMaterial = new THREE.PointsMaterial( { color: 0xFFFFFFF } );
+					var starsMaterial = new THREE.PointsMaterial( { color: 0xFFFFFFF } );
 
-var starField = new THREE.Points( starsGeometry, starsMaterial );
+					var starField = new THREE.Points( starsGeometry, starsMaterial );
 
-scene.add( starField );
-var clicked = false;
-// var dragControls = new THREE.DragControls( objects, camera, renderer.domElement );
-// 	clicked = true
-// 	dragControls.addEventListener( 'dragstart', function ( event ) { controls.enabled = true;
-// 		clicked = false;
-// 	 } )
-// 	dragControls.addEventListener( 'dragend', function ( event ) { controls.enabled = true;
-//
-//
-// 	 } )
-
-
+					scene.add( starField );
+					var clicked = false;
+					// var dragControls = new THREE.DragControls( objects, camera, renderer.domElement );
+					// 	clicked = true
+					// 	dragControls.addEventListener( 'dragstart', function ( event ) { controls.enabled = true;
+					// 		clicked = false;
+					// 	 } )
+					// 	dragControls.addEventListener( 'dragend', function ( event ) { controls.enabled = true;
+					//
+					//
+					// 	 } )
 
 
-var i = 0;
-//
-// if (controls.enabled === false) {
-//
-// 	sunPivot.applyMatrix()
-//
-//
-// }
-//KEY AND TOUCH EVENTS
-var mc = new Hammer(phone);
-
-// listen to events...
-mc.on("panleft panright tap press", function(ev) {
-    onPhoneTap(ev)
-});
-function onPhoneTap(event) {
-if (event.type === "press" ) {
-
-if (disabled) {
-  zoomPhone.style.display = 'flex'
- controls.minDistance = 48;
- controls.maxDistance = 7500;
-camera.position.set( 0, 480, 1050 );
-controls.enablePan = false;
-controls.enableRotate = false;
-disabled = false
-console.log(disabled)
-}  else {
-  zoomPhone.style.display = 'none'
-	controls.minDistance = 400;
-  controls.maxDistance = 1500;
-controls.enablePan = true;
-controls.enableRotate = true;
-disabled = true
-console.log(disabled)
-}}}
-
-document.addEventListener("keydown", onDocumentKeyDown1, false);
-function onDocumentKeyDown1(event) {
-if (event.keyCode === 69 ) {
-
-if (disabled) {
-  zoom.style.display = 'flex'
- controls.minDistance = 48;
- controls.maxDistance = 7500;
-camera.position.set( 0, 480, 1050 );
-controls.enablePan = false;
-controls.enableRotate = false;
-disabled = false
-console.log(disabled)
-}  else {
-  zoom.style.display = 'none'
-	controls.minDistance = 400;
-  controls.maxDistance = 1500;
-controls.enablePan = true;
-controls.enableRotate = true;
-disabled = true
-console.log(disabled)
-}}}
-
-document.addEventListener("keydown", onDocumentKeyDown, false);
-function onDocumentKeyDown(event) {
-if (event.keyCode === 71 ) {
-cube.orbPos.z -= 1;
-
-}}
-
-sunPivot.rotation.y = 0;
-	var accumilated
-
-var disabled = true
 
 
-				var animate1 = function() {
+					var i = 0;
+					//
+					// if (controls.enabled === false) {
+					//
+					// 	sunPivot.applyMatrix()
+					//
+					//
+					// }
+					//KEY AND TOUCH EVENTS
+					var mc = new Hammer(phone);
+
+					// listen to events...
+					mc.on("panleft panright tap press", function(ev) {
+					    onPhoneTap(ev)
+					});
+					function onPhoneTap(event) {
+					if (event.type === "press" ) {
+
+					if (disabled) {
+					  zoomPhone.style.display = 'flex'
+					 controls.minDistance = 48;
+					 controls.maxDistance = 7500;
+					camera.position.set( 0, 480, 1050 );
+					controls.enablePan = false;
+					controls.enableRotate = false;
+					disabled = false
+					console.log(disabled)
+					}  else {
+					  zoomPhone.style.display = 'none'
+						controls.minDistance = 400;
+					  controls.maxDistance = 1500;
+					controls.enablePan = true;
+					controls.enableRotate = true;
+					disabled = true
+					console.log(disabled)
+					}}}
+
+					document.addEventListener("keydown", onDocumentKeyDown1, false);
+					function onDocumentKeyDown1(event) {
+					if (event.keyCode === 69 ) {
+
+					if (disabled) {
+					  zoom.style.display = 'flex'
+					 controls.minDistance = 48;
+					 controls.maxDistance = 7500;
+					camera.position.set( 0, 480, 1050 );
+					controls.enablePan = false;
+					controls.enableRotate = false;
+					disabled = false
+					console.log(disabled)
+					}  else {
+					  zoom.style.display = 'none'
+						controls.minDistance = 400;
+					  controls.maxDistance = 1500;
+					controls.enablePan = true;
+					controls.enableRotate = true;
+					disabled = true
+					console.log(disabled)
+					}}}
+
+					document.addEventListener("keydown", onDocumentKeyDown, false);
+					function onDocumentKeyDown(event) {
+					if (event.keyCode === 71 ) {
+					cube.orbPos.z -= 1;
+
+					}}
+
+					sunPivot.rotation.y = 0;
+						var accumilated
+
+					var disabled = true
+
+
+					var animate1 = function() {
 				  requestAnimationFrame(animate1);
 
 					 if(!clicked) {
@@ -352,7 +352,7 @@ var disabled = true
 					cube.rotation.x += 0.009;
 				 	cube.rotation.y += 0.001;
 				 	cube.rotation.z += 0.001;
-controls.update()
+					controls.update()
 
 				  // renderer.render(scene, camera);
 				}
@@ -553,7 +553,7 @@ controls.update()
 
 			}
 
-smoothWater();
+			smoothWater();
 			function onWindowResize() {
 
 				windowHalfX = window.innerWidth / 2;

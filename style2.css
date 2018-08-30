@@ -151,7 +151,7 @@ input {
   transition: all .2s ease-in-out;
 }
 .tee-container:hover .tee-overlay{
-  opacity: 1;
+  opacity: 0.6;
 }
 
 
