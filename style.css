@@ -121,6 +121,9 @@ input {
 .zoom-container h2 {
   animation: blinker 3s linear infinite;
 }
+.zoom-phone-text {
+  touch-action: none;
+}
 .phone-bar-container {
   display: none
 }
