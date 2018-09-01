@@ -1,0 +1,5 @@
+RewriteEngine On
+
+RewriteCond %{HTTPS} off
+RewriteCond %{HTTP_HOST} =milkraid.com
+RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301]
